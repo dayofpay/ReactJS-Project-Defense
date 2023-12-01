@@ -1,4 +1,4 @@
-import withCarousel from "../../HOC/withCarousel"
+import withCarousel from "../../../HOC/withCarousel"
 
 function Team(){
     return (

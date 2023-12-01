@@ -19,8 +19,8 @@ import 'owl.carousel';
 import '/js/main.js?url';
 import {Routes,Route} from 'react-router-dom';
 
-import Topbar from "./components/Topbar/Topbar"
-import Navbar from './components/Navigations/Navbar';
+import Topbar from "./components/site/Topbar/Topbar"
+import Navbar from './components/site/Navigations/Navbar';
 import Home from './Pages/Home';
 import About from './Pages/About';
 

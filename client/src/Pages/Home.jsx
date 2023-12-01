@@ -1,12 +1,12 @@
-import About from "../components/About/About"
-import WhyUs from "../components/Features/WhyChooseUs"
-import Header from "../components/Header/Header"
-import Navbar from "../components/Navigations/Navbar"
+import About from "../components/site/About/About"
+import WhyUs from "../components/site/Features/WhyChooseUs"
+import Header from "../components/site/Header/Header"
 
-import CourseList from '../components/Courses/CourseList';
-import Team from '../components/Team/Team';
-import EnchancedTestimotals from '../components/Testimotals/Testimotals';
-import Footer from '../components/Footer/Footer';
+
+import CourseList from '../components/site/Courses/CourseList';
+import Team from '../components/site/Team/Team';
+import EnchancedTestimotals from '../components/site/Testimotals/Testimotals';
+import Footer from '../components/site/Footer/Footer';
 
 export default function Home(){
     return (

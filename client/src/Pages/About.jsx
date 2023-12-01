@@ -1,6 +1,6 @@
-import WhyUs from "../components/Features/WhyChooseUs";
-import AboutHeader from "../components/Header/About";
-import AboutComponent from "../components/About/About";
+import WhyUs from "../components/site/Features/WhyChooseUs";
+import AboutHeader from "../components/site/Header/About";
+import AboutComponent from "../components/site/About/About";
 
 export default function About(){
     return (
