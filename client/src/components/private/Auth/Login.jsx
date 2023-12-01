@@ -1,11 +1,13 @@
 import LoadDependencies from "../../../utils/LoadAdminDependencies"
+import LoadAdminStyles from "../../../utils/LoadAdminStyles";
 
 export default function Login(){
     LoadDependencies();
+
     return (
         <>
-<link rel="stylesheet" href="/css/clientzone.min.css"/>
-<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css"/> <section class="section main-section">
+    {LoadAdminStyles()};
+ <section class="section main-section">
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
