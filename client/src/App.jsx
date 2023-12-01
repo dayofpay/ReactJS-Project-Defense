@@ -7,10 +7,10 @@ function App() {
   return (
     // ALL COMPONENTS ARE STATIC AT THE TIME YOU ARE LOOKING AT THIS, IM STILL SETTING UP THE THEME !!
     <>
-    <Topbar />
-    <Navbar />
-    <Header />
-    <About />
+      <Topbar />
+      <Navbar />
+      <Header />
+      <About />
     </>
     // ALL COMPONENTS ARE STATIC AT THE TIME YOU ARE LOOKING AT THIS, IM STILL SETTING UP THE THEME !!
   )
