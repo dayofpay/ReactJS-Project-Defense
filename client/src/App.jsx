@@ -29,6 +29,7 @@ import Topbar from "./components/Topbar/Topbar"
 import CourseList from './components/Courses/CourseList';
 import Team from './components/Team/Team';
 import EnchancedTestimotals from './components/Testimotals/Testimotals';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
       <CourseList />
       <Team />
       <EnchancedTestimotals />
+      <Footer />
     </>
     // ALL COMPONENTS ARE STATIC AT THE TIME YOU ARE LOOKING AT THIS, IM STILL SETTING UP THE THEME !!
   )
