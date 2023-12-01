@@ -16,6 +16,8 @@ export default function Navbar(){
                         <NavLink to="/" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Home</NavLink>
                         <NavLink to="/about" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>About</NavLink>
                         <NavLink to="/courses" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Courses</NavLink>
+                        <NavLink to="/login" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Login</NavLink>
+
                         <div className="nav-item dropdown">
                             <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div className="dropdown-menu m-0">

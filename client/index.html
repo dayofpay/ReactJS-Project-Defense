@@ -1,10 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Course System - React Defense Project</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -24,12 +23,16 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Order scripts properly -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Your main React script -->
     <script type="module" src="/src/main.jsx"></script>
 
-
-
+    <!-- If counterUp script depends on jQuery, load it here -->
+    <!-- Make sure the path is correct -->
+    <script type="module" src="/lib/counterup/counterup.min.js?url"></script>
   </body>
 </html>
