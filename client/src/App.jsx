@@ -17,19 +17,12 @@ import 'owl.carousel';
 
 
 import '/js/main.js?url';
+import {Routes,Route} from 'react-router-dom';
 
-
-
-
-import About from "./components/About/About"
-import WhyUs from "./components/Features/WhyChooseUs"
-import Header from "./components/Header/Header"
-import Navbar from "./components/Navigations/Navbar"
 import Topbar from "./components/Topbar/Topbar"
-import CourseList from './components/Courses/CourseList';
-import Team from './components/Team/Team';
-import EnchancedTestimotals from './components/Testimotals/Testimotals';
-import Footer from './components/Footer/Footer';
+import Navbar from './components/Navigations/Navbar';
+import Home from './Pages/Home';
+import About from './Pages/About';
 
 function App() {
   return (
@@ -37,13 +30,12 @@ function App() {
     <>
       <Topbar />
       <Navbar />
-      <Header />
-      <About />
-      <WhyUs />
-      <CourseList />
-      <Team />
-      <EnchancedTestimotals />
-      <Footer />
+    <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />}/>
+    </Routes>
+
+
     </>
     // ALL COMPONENTS ARE STATIC AT THE TIME YOU ARE LOOKING AT THIS, IM STILL SETTING UP THE THEME !!
   )

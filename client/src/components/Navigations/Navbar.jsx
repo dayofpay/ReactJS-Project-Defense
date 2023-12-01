@@ -1,3 +1,5 @@
+import { Link, NavLink } from "react-router-dom";
+
 export default function Navbar(){
     return (
         // <!-- Navbar Start -->
@@ -11,9 +13,9 @@ export default function Navbar(){
                 </button>
                 <div className="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                     <div className="navbar-nav mx-auto py-0">
-                        <a href="index.html" className="nav-item nav-link active">Home</a>
-                        <a href="about.html" className="nav-item nav-link">About</a>
-                        <a href="course.html" className="nav-item nav-link">Courses</a>
+                        <NavLink to="/" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Home</NavLink>
+                        <NavLink to="/about" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>About</NavLink>
+                        <NavLink to="/courses" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Courses</NavLink>
                         <div className="nav-item dropdown">
                             <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div className="dropdown-menu m-0">
