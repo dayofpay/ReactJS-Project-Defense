@@ -1,8 +1,26 @@
+import { Link } from "react-router-dom";
+import withAuth from "../../../HOC/withAuth";
 import LoadDependencies from "../../../utils/LoadAdminDependencies"
 import LoadAdminStyles from "../../../utils/LoadAdminStyles"
+import getAvatar from "../../../utils/getAvatar";
+import { useState,useEffect } from "react";
+function RenderNavigation({username,email}){
 
-export default function Navigation(){
     LoadDependencies();
+    const [avatarUrl, setAvatarUrl] = useState('');
+
+    useEffect(() => {
+      const fetchAvatarUrl = async () => {
+        try {
+          const avatar = await getAvatar(email);
+          setAvatarUrl(`https://gravatar.com/avatar/${avatar}.jpg`);
+        } catch (error) {
+          console.error('Error fetching avatar:', error);
+        }
+      };
+  
+      fetchAvatarUrl();
+    }, [email]);
     return (
         <>
 {LoadAdminStyles()}
@@ -53,9 +71,9 @@ export default function Navigation(){
       <div className="navbar-item dropdown has-divider has-user-avatar">
         <a className="navbar-link">
           <div className="user-avatar">
-            <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="John Doe" className="rounded-full"/>
+            <img src={avatarUrl} alt={username} className="rounded-full"/>
           </div>
-          <div className="is-user-name"><span>John Doe</span></div>
+          <div className="is-user-name"><span>{username}</span></div>
           <span className="icon"><i className="mdi mdi-chevron-down"></i></span>
         </a>
         <div className="navbar-dropdown">
@@ -86,10 +104,10 @@ export default function Navigation(){
         <span className="icon"><i className="mdi mdi-github-circle"></i></span>
         <span>GitHub</span>
       </a>
-      <a title="Log out" className="navbar-item desktop-icon-only">
+      <Link to="/logout" title="Log out" className="navbar-item desktop-icon-only">
         <span className="icon"><i className="mdi mdi-logout"></i></span>
         <span>Log out</span>
-      </a>
+      </Link>
     </div>
   </div>
 </nav>
@@ -97,3 +115,7 @@ export default function Navigation(){
         
     )
 }
+
+const Navigation = withAuth(RenderNavigation);
+
+export default Navigation;
