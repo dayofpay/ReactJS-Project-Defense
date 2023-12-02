@@ -62,10 +62,10 @@ function RenderNavigation({username,email}){
             <span>Messages</span>
           </a>
           <hr className="navbar-divider"/>
-          <a className="navbar-item">
+          <Link className="navbar-item">
             <span className="icon"><i className="mdi mdi-logout"></i></span>
             <span>Log Out</span>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="navbar-item dropdown has-divider has-user-avatar">
@@ -90,10 +90,10 @@ function RenderNavigation({username,email}){
             <span>Messages</span>
           </a>
           <hr className="navbar-divider"/>
-          <a className="navbar-item">
+          <Link className="navbar-item" to={"/logout"}>
             <span className="icon"><i className="mdi mdi-logout"></i></span>
             <span>Log Out</span>
-          </a>
+          </Link>
         </div>
       </div>
       <a href="https://justboil.me/tailwind-admin-templates" className="navbar-item has-divider desktop-icon-only">
