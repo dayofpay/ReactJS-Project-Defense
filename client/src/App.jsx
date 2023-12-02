@@ -6,6 +6,7 @@ const About = lazy(() => import('./Pages/About'));
 const PublicLogin = lazy(() => import('./components/private/Auth/Login'));
 import { AuthProvider } from './contexts/authContext';
 import Logout from './components/private/Auth/Logout';
+import Register from './components/private/Auth/Register';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<PublicLogin />} />
         <Route path='/logout' element={<Logout />}/>
+        <Route path='/register' element={<Register />}/>
       </Routes>
       </Suspense>
       </AuthProvider>
