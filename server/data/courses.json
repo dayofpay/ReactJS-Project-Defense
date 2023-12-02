@@ -8,7 +8,11 @@
             "firstLine" : "test",
             "secondLine" : "test"
         },
+        "course_image" : "https://bbst1.badabusiness.com/wp-content/uploads/2021/04/online-course-blog-header.jpg",
         "course_description" : "Nothing here",
-        "course_category" : "Test"
+        "course_category" : "Test",
+        "course_lecturers" : {
+            "lecture_list" : ["test1","test2"]
+        }
     }
 }

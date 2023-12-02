@@ -25,14 +25,6 @@ function RenderNavigation({username,email}){
         <>
 {LoadAdminStyles()}
         <nav id="navbar-main" className="navbar is-fixed-top">
-  <div className="navbar-brand">
-    <a className="navbar-item mobile-aside-button">
-      <span className="icon"><i className="mdi mdi-forwardburger mdi-24px"></i></span>
-    </a>
-    <div className="navbar-item">
-      <div className="control"><input placeholder="Search everywhere..." className="input"/></div>
-    </div>
-  </div>
   <div className="navbar-brand is-right">
     <a className="navbar-item --jb-navbar-menu-toggle" data-target="navbar-menu">
       <span className="icon"><i className="mdi mdi-dots-vertical mdi-24px"></i></span>

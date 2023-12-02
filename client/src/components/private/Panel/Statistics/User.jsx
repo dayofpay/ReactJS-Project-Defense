@@ -1,0 +1,56 @@
+export default function UserStats(){
+    // this will be the statistics that every user will see in their dashboard ...
+
+    return(
+        <section className="section main-section">
+    <div className="grid gap-6 grid-cols-1 md:grid-cols-3 mb-6">
+      <div className="card">
+        <div className="card-content">
+          <div className="flex items-center justify-between">
+            <div className="widget-label">
+              <h3>
+                Clients
+              </h3>
+              <h1>
+                512
+              </h1>
+            </div>
+            <span className="icon widget-icon text-green-500"><i className="mdi mdi-account-multiple mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+      <div className="card">
+        <div className="card-content">
+          <div className="flex items-center justify-between">
+            <div className="widget-label">
+              <h3>
+                Sales
+              </h3>
+              <h1>
+                $7,770
+              </h1>
+            </div>
+            <span className="icon widget-icon text-blue-500"><i className="mdi mdi-cart-outline mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div className="card">
+        <div className="card-content">
+          <div className="flex items-center justify-between">
+            <div className="widget-label">
+              <h3>
+                Performance
+              </h3>
+              <h1>
+                256%
+              </h1>
+            </div>
+            <span className="icon widget-icon text-red-500"><i className="mdi mdi-finance mdi-48px"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+    )
+}
