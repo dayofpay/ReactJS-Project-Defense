@@ -5,6 +5,10 @@ export default function useForm(submitHandler, initialValues, validatorSettings)
   const [errors, setErrors] = useState({});
 
   const validate = () => {
+    if (!validatorSettings) {
+      return true; // if there is no special validation settings ( Like in register form  :D )
+    }
+
     let validationErrors = {};
 
     Object.keys(validatorSettings).forEach((fieldName) => {
@@ -37,10 +41,8 @@ export default function useForm(submitHandler, initialValues, validatorSettings)
 
   const onSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const isValid = validate();
-
       if (isValid) {
         const result = await submitHandler(values);
         if (result && !result.success) {
@@ -55,7 +57,7 @@ export default function useForm(submitHandler, initialValues, validatorSettings)
       }
     } catch (error) {
       console.error("An unexpected error occurred:", error);
-      setErrors({ form: "An unexpected error occurred" });
+      setErrors({ form: error.message });
     }
   };
 

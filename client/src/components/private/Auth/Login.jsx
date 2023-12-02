@@ -13,7 +13,7 @@ export default function Login(){
         Password: 'password',
     };
     const {loginSubmitHandler} = useContext(AuthContext)
-    const {values,onChange, onSubmit,error} = useForm(loginSubmitHandler,{
+    const {values,onChange, onSubmit,errors} = useForm(loginSubmitHandler,{
         [LoginFormKeys.Email] : '',
         [LoginFormKeys.Password ] : '',
     });
@@ -52,7 +52,11 @@ export default function Login(){
               Please enter your password
             </p>
           </div>
-          {error && <p className={styles["error-message"]}>{error?.["message"]}</p>}
+          {errors && Object.keys(errors).map((fieldName) => (
+        <p key={fieldName} className={styles["error-message"]}>
+          {errors[fieldName]}
+        </p>
+      ))}
 
           <hr/>
 
