@@ -19,7 +19,7 @@ export default function Navigation(){
                         <NavLink to="/" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Home</NavLink>
                         <NavLink to="/about" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>About</NavLink>
                         <NavLink to="/courses" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Courses</NavLink>
-                        {isAuthenticated ? (<NavLink to="/login" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>My Account</NavLink>) : <NavLink to="/login" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Login</NavLink>}
+                        {isAuthenticated ? (<NavLink to="/dashboard" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>My Account</NavLink>) : <NavLink to="/login" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Login</NavLink>}
 
 
                         <div className="nav-item dropdown">

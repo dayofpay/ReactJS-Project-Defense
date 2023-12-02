@@ -1,12 +1,15 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-const Home = lazy(() => import('./Pages/Home'));
-const About = lazy(() => import('./Pages/About'));
+const Home = lazy(() => import('./Pages/Site/Home'));
+const About = lazy(() => import('./Pages/Site/About'));
 const PublicLogin = lazy(() => import('./components/private/Auth/Login'));
 import { AuthProvider } from './contexts/authContext';
-import Logout from './components/private/Auth/Logout';
-import Register from './components/private/Auth/Register';
+import ProtectedRoute from './contexts/protectContext';
+const Logout = lazy(() => import('./components/private/Auth/Logout'));
+const Register = lazy(() => import('./components/private/Auth/Register'));
+const ShowDashboard = lazy(() => import('./Pages/Panel/Dashboard'));
+
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
         <Route path="/login" element={<PublicLogin />} />
         <Route path='/logout' element={<Logout />}/>
         <Route path='/register' element={<Register />}/>
+        <Route element={<ProtectedRoute />}>
+          <Route path='/dashboard' element={<ShowDashboard/>}/>
+        </Route>
       </Routes>
       </Suspense>
       </AuthProvider>
