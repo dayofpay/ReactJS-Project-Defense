@@ -1,6 +1,9 @@
-import {  NavLink } from "react-router-dom";
+import {  Link, NavLink } from "react-router-dom";
+import AuthContext from "../../../contexts/authContext";
+import { useContext } from "react";
 
-export default function Navbar(){
+export default function Navigation(){
+    const {isAuthenticated,username} = useContext(AuthContext);
     return (
         // <!-- Navbar Start -->
         <div className="container-fluid p-0">
@@ -16,7 +19,8 @@ export default function Navbar(){
                         <NavLink to="/" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Home</NavLink>
                         <NavLink to="/about" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>About</NavLink>
                         <NavLink to="/courses" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Courses</NavLink>
-                        <NavLink to="/login" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Login</NavLink>
+                        {isAuthenticated ? (<NavLink to="/login" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>My Account</NavLink>) : <NavLink to="/login" className={({isActive}) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link'}>Login</NavLink>}
+
 
                         <div className="nav-item dropdown">
                             <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
@@ -29,10 +33,15 @@ export default function Navbar(){
                         </div>
                         <a href="contact.html" className="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="" className="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
+                    {isAuthenticated ? (<Link to="/logout" className="btn btn-primary py-2 px-4 d-none d-lg-block">Logout</Link>) : ((<Link to="/register" className="btn btn-primary py-2 px-4 d-none d-lg-block">Register</Link>)) }
                 </div>
             </nav>
         </div>
         // <!-- Navbar End -->
     )
 }
+
+
+// const Navbar = withAuth(Navigation)
+
+// export default Navbar;

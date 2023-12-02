@@ -1,66 +1,71 @@
+import { Link } from "react-router-dom";
 import LoadDependencies from "../../../utils/LoadAdminDependencies"
 import LoadAdminStyles from "../../../utils/LoadAdminStyles";
-
+import { useContext } from "react";
+import AuthContext from "../../../contexts/authContext";
+import useForm from "../../../hooks/useForm";
+import styles from "../../../../public/css/custom.module.css";
 export default function Login(){
     LoadDependencies();
 
+    const LoginFormKeys = {
+        Email: 'email',
+        Password: 'password',
+    };
+    const {loginSubmitHandler} = useContext(AuthContext)
+    const {values,onChange, onSubmit,error} = useForm(loginSubmitHandler,{
+        [LoginFormKeys.Email] : '',
+        [LoginFormKeys.Password ] : '',
+    });
     return (
         <>
     {LoadAdminStyles()};
- <section class="section main-section">
-    <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-          <span class="icon"><i class="mdi mdi-lock"></i></span>
+ <section className="section main-section">
+    <div className="card">
+      <header className="card-header">
+        <p className="card-header-title">
+          <span className="icon"><i className="mdi mdi-lock"></i></span>
           Login
         </p>
       </header>
-      <div class="card-content">
-        <form method="get">
+      <div className="card-content">
+        <form id="login" onSubmit={onSubmit}>
 
-          <div class="field spaced">
-            <label class="label">Login</label>
-            <div class="control icons-left">
-              <input class="input" type="text" name="login" placeholder="user@example.com" autocomplete="username"/>
-              <span class="icon is-small left"><i class="mdi mdi-account"></i></span>
+          <div className="field spaced">
+            <label className="label">Login</label>
+            <div className="control icons-left">
+              <input className="input" type="text" name={LoginFormKeys.Email} placeholder="user@example.com" autoComplete="email" onChange={onChange} value={values[LoginFormKeys.Email]}/>
+              <span className="icon is-small left"><i className="mdi mdi-account"></i></span>
             </div>
-            <p class="help">
-              Please enter your login
+            <p className="help">
+              Please enter your e-mail
             </p>
           </div>
 
-          <div class="field spaced">
-            <label class="label">Password</label>
-            <p class="control icons-left">
-              <input class="input" type="password" name="password" placeholder="Password" autocomplete="current-password"/>
-              <span class="icon is-small left"><i class="mdi mdi-asterisk"></i></span>
+          <div className="field spaced">
+            <label className="label">Password</label>
+            <p className="control icons-left">
+              <input className="input" type="password" name={LoginFormKeys.Password} placeholder="Password" autoComplete="current-password" onChange={onChange} value={values[LoginFormKeys.Password]}/>
+              <span className="icon is-small left"><i className="mdi mdi-asterisk"></i></span>
             </p>
-            <p class="help">
+            <p className="help">
               Please enter your password
             </p>
           </div>
-
-          <div class="field spaced">
-            <div class="control">
-              <label class="checkbox"><input type="checkbox" name="remember" value="1" checked/>
-                <span class="check"></span>
-                <span class="control-label">Remember</span>
-              </label>
-            </div>
-          </div>
+          {error && <p className={styles["error-message"]}>{error?.["message"]}</p>}
 
           <hr/>
 
-          <div class="field grouped">
-            <div class="control">
-              <button type="submit" class="button blue">
+          <div className="field grouped">
+            <div className="control">
+              <button type="submit" className="button blue">
                 Login
               </button>
             </div>
-            <div class="control">
-              <a href="index.html" class="button">
-                Back
-              </a>
+            <div className="control">
+              <Link to="/" className="button">Back</Link>
+
+
             </div>
           </div>
 
