@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { getUserCoursesList } from "../../../../services/userServices"
 
 import withCourseList from "../../../../HOC/withCourseList";
 function ShowUserStats({courseList}){

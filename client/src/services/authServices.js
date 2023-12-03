@@ -18,7 +18,7 @@ export const register = async (email,password) => {
     }
     const username = email.split('@')?.[0];
     const result = await request.post(`${baseUrl}/register`,{email,password,...initalRegisterValues,username});
-    return result;; 
+    return result; 
 }
 
 export const logout = async() => {
