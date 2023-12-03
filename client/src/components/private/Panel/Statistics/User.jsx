@@ -1,6 +1,9 @@
-export default function UserStats(){
-    // this will be the statistics that every user will see in their dashboard ...
+import { useContext } from "react";
+import { getUserCoursesList } from "../../../../services/userServices"
 
+import withCourseList from "../../../../HOC/withCourseList";
+function ShowUserStats({courseList}){
+    // this will be the statistics that every user will see in their dashboard ...
     return(
         <section className="section main-section">
     <div className="grid gap-6 grid-cols-1 md:grid-cols-3 mb-6">
@@ -9,13 +12,13 @@ export default function UserStats(){
           <div className="flex items-center justify-between">
             <div className="widget-label">
               <h3>
-                Clients
+                My Courses
               </h3>
               <h1>
-                512
+                {courseList.length}
               </h1>
             </div>
-            <span className="icon widget-icon text-green-500"><i className="mdi mdi-account-multiple mdi-48px"></i></span>
+            <span className="icon widget-icon text-green-500"><i className="mdi mdi-book mdi-48px"></i></span>
           </div>
         </div>
       </div>
@@ -54,3 +57,7 @@ export default function UserStats(){
     </section>
     )
 }
+
+const UserStats = withCourseList(ShowUserStats);
+
+export default UserStats;

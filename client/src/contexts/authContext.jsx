@@ -45,7 +45,7 @@ export const AuthProvider = ({
     }
   
 
-    const logValues = {loginSubmitHandler,registerSubmitHandler,username:auth.username,password:auth.password,email:auth.email,isAuthenticated: !!auth.email,token: auth.accessToken,logoutHandler}
+    const logValues = {loginSubmitHandler,registerSubmitHandler,username:auth.username,password:auth.password,email:auth.email,isAuthenticated: !!auth.email,token: auth.accessToken,id:auth._id,logoutHandler}
     return (
         <AuthContext.Provider value={logValues}>
             {children}

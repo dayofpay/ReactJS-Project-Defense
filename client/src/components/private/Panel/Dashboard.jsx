@@ -1,6 +1,9 @@
+import withCourseList from "../../../HOC/withCourseList"
+import convertTimestamp from "../../../utils/timeConvert";
 import UserStats from "./Statistics/User"
 
-export default function MainDashboard(){
+function ShowDashboard({courseList}){
+
     return (
         <>
                 <section className="is-title-bar">
@@ -35,33 +38,31 @@ export default function MainDashboard(){
         </a>
       </header>
       <div className="card-content">
-        <table>
+        {Array.from(courseList).length ? (        <table>
           <thead>
           <tr>
             <th></th>
-            <th>Name</th>
-            <th>Company</th>
-            <th>City</th>
-            <th>Progress</th>
+            <th>Course Name</th>
+            <th>Students</th>
+            <th>Course Price</th>
+            <th>Course Category</th>
             <th>Created</th>
-            <th></th>
+            <th>Course ID</th>
           </tr>
           </thead>
           <tbody>
-          <tr>
+            {Array.from(courseList).map((course,index) =>           <tr  key={index}>
             <td className="image-cell">
               <div className="image">
-                <img src="https://avatars.dicebear.com/v2/initials/rebecca-bauch.svg" className="rounded-full"/>
+                <img src={course.course_image} className="rounded-full"/>
               </div>
             </td>
-            <td data-label="Name">Rebecca Bauch</td>
-            <td data-label="Company">Daugherty-Daniel</td>
-            <td data-label="City">South Cory</td>
-            <td data-label="Progress" className="progress-cell">
-              <progress max="100" value="79">79</progress>
-            </td>
+            <td data-label="Name">{course.course_name}</td>
+            <td data-label="Company">{course.course_students.length}</td>
+            <td data-label="City">{course.course_price} $</td>
+            <td data-label="course-category">{course.course_category}</td>
             <td data-label="Created">
-              <small className="text-gray-500" title="Oct 25, 2021">Oct 25, 2021</small>
+              <small className="text-gray-500" title="Oct 25, 2021">{convertTimestamp(course._createdOn)}</small>
             </td>
             <td className="actions-cell">
               <div className="buttons right nowrap">
@@ -73,13 +74,24 @@ export default function MainDashboard(){
                 </button>
               </div>
             </td>
-          </tr>
+          </tr>)}
           
           </tbody>
-        </table>
+        </table>) : (<div className="card empty">
+      <div className="card-content">
+        <div>
+          <span className="icon large"><i className="mdi mdi-emoticon-sad mdi-48px"></i></span>
+        </div>
+        <p>You are not in any course.</p>
+      </div>
+    </div>)}
       </div>
     </div>
 
         </>
     )
 }
+
+const MainDashboard = withCourseList(ShowDashboard);
+
+export default MainDashboard;

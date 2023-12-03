@@ -1343,16 +1343,20 @@
             "3564027f-adcd-4425-b2c0-1253d2386c0c" : {
                 "course_id" : "28383873",
                 "course_name" : "Learn english free",
-                "course_students" : [299,877],
+                "course_students" : ["35c62d76-8152-4626-8712-eeb96381bea8"],
                 "course_price" : 0,
                 "course_details" : {
                     "firstLine" : "test",
                     "secondLine" : "test"
                 },
+                "course_image" : "https://bbst1.badabusiness.com/wp-content/uploads/2021/04/online-course-blog-header.jpg",
                 "course_description" : "Nothing here",
-                "course_category" : "Test"
+                "course_category" : "Test",
+                "course_lecturers" : {
+                    "lecture_list" : ["test1","test2"]
+                }
             }
-        },
+        }
     };
     var rules$1 = {
     	users: {
