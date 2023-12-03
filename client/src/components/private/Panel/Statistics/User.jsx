@@ -1,6 +1,7 @@
 
 import withCourseList from "../../../../HOC/withCourseList";
-function ShowUserStats({courseList}){
+import withUserCount from "../../../../HOC/withUserCount";
+function ShowUserStats({courseList,userCount}){
     // this will be the statistics that every user will see in their dashboard ...
     return(
         <section className="section main-section">
@@ -41,10 +42,10 @@ function ShowUserStats({courseList}){
           <div className="flex items-center justify-between">
             <div className="widget-label">
               <h3>
-                Performance
+                Registered Users
               </h3>
               <h1>
-                256%
+                {userCount}
               </h1>
             </div>
             <span className="icon widget-icon text-red-500"><i className="mdi mdi-finance mdi-48px"></i></span>
@@ -56,6 +57,5 @@ function ShowUserStats({courseList}){
     )
 }
 
-const UserStats = withCourseList(ShowUserStats);
-
+const UserStats = withUserCount(withCourseList(ShowUserStats))
 export default UserStats;
