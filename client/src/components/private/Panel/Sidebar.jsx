@@ -1,24 +1,30 @@
+import { useContext } from "react"
+import AuthContext from "../../../contexts/authContext"
+
 export default function Sidebar(){
+  const {isStaff} = useContext(AuthContext);
     return (
         <aside className="aside is-placed-left is-expanded">
   <div className="aside-tools">
     <div>
-      Admin <b className="font-black">One</b>
+      Course <b className="font-black">System</b>
     </div>
   </div>
   <div className="menu is-menu-main">
-    <p className="menu-label">General</p>
+    <p className="menu-label">Members</p>
     <ul className="menu-list">
-      <li className="active">
+      <li className="--set-active-index-html">
         <a href="index.html">
           <span className="icon"><i className="mdi mdi-desktop-mac"></i></span>
           <span className="menu-item-label">Dashboard</span>
         </a>
       </li>
     </ul>
-    <p className="menu-label">Examples</p>
-    <ul className="menu-list">
-      <li className="--set-active-tables-html">
+    {isStaff && (
+      <>
+<p className="menu-label">[STAFF]</p>
+      <ul className="menu-list">
+      <li className="active">
         <a href="tables.html">
           <span className="icon"><i className="mdi mdi-table"></i></span>
           <span className="menu-item-label">Tables</span>
@@ -62,6 +68,8 @@ export default function Sidebar(){
         </ul>
       </li>
     </ul>
+      </>
+    )}
     <p className="menu-label">About</p>
     <ul className="menu-list">
       <li>

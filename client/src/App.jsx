@@ -6,6 +6,7 @@ const About = lazy(() => import('./Pages/Site/About'));
 const PublicLogin = lazy(() => import('./components/private/Auth/Login'));
 import { AuthProvider } from './contexts/authContext';
 import ProtectedRoute from './contexts/protectContext';
+import Profile from './Pages/Panel/Profile';
 const Logout = lazy(() => import('./components/private/Auth/Logout'));
 const Register = lazy(() => import('./components/private/Auth/Register'));
 const ShowDashboard = lazy(() => import('./Pages/Panel/Dashboard'));
@@ -24,6 +25,7 @@ function App() {
         <Route path='/register' element={<Register />}/>
         <Route element={<ProtectedRoute />}>
           <Route path='/dashboard' element={<ShowDashboard/>}/>
+          <Route path='/profile' element={<Profile/>}/>
         </Route>
       </Routes>
       </Suspense>

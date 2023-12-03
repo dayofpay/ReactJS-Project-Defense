@@ -41,10 +41,10 @@ function RenderNavigation({username,email}){
           </span>
         </a>
         <div className="navbar-dropdown">
-          <a href="profile.html" className="navbar-item">
+          <Link to="/profile" className="navbar-item">
             <span className="icon"><i className="mdi mdi-account"></i></span>
             <span>My Profile</span>
-          </a>
+          </Link>
           <a className="navbar-item">
             <span className="icon"><i className="mdi mdi-settings"></i></span>
             <span>Settings</span>
@@ -69,10 +69,10 @@ function RenderNavigation({username,email}){
           <span className="icon"><i className="mdi mdi-chevron-down"></i></span>
         </a>
         <div className="navbar-dropdown">
-          <a href="profile.html" className="navbar-item">
+        <Link to="/profile" className="navbar-item">
             <span className="icon"><i className="mdi mdi-account"></i></span>
             <span>My Profile</span>
-          </a>
+          </Link>
           <a className="navbar-item">
             <span className="icon"><i className="mdi mdi-settings"></i></span>
             <span>Settings</span>

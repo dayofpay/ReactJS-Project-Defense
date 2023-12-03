@@ -1322,16 +1322,22 @@
     		"35c62d76-8152-4626-8712-eeb96381bea8": {
     			email: "peter@abv.bg",
     			username: "Peter",
+                balance : 0,
+                isStaff : false,
     			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
     		},
     		"847ec027-f659-4086-8032-5173e2f9c93a": {
     			email: "george@abv.bg",
     			username: "George",
+                balance : 0,
+                isStaff : false,
     			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
     		},
     		"60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
     			email: "admin@abv.bg",
     			username: "Admin",
+                balance : 0,
+                isStaff : true,
     			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302"
     		}
     	},
@@ -1341,6 +1347,7 @@
     var seedData = {
     	courses: {
             "3564027f-adcd-4425-b2c0-1253d2386c0c" : {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "course_id" : "28383873",
                 "course_name" : "Learn english free",
                 "course_students" : ["35c62d76-8152-4626-8712-eeb96381bea8"],
@@ -1354,7 +1361,9 @@
                 "course_category" : "Test",
                 "course_lecturers" : {
                     "lecture_list" : ["test1","test2"]
-                }
+                },
+                "_createdOn": 1701564918920,
+                "_id": "f1346126-b62f-4151-b6dc-1a43a2b1ba40",
             }
         }
     };
