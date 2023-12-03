@@ -42,11 +42,17 @@ export default function Sidebar(){
           <span className="menu-item-label">Manage Courses</span>
         </Link>
       </li>
+      <li className="">
+        <Link to="/manage-courses">
+          <span className="icon"><i className="mdi mdi-square-edit-outline"></i></span>
+          <span className="menu-item-label">Manage Users</span>
+        </Link>
+      </li>
       <li className="--set-active-profile-html">
-        <a href="profile.html">
+        <Link to="/profile">
           <span className="icon"><i className="mdi mdi-account-circle"></i></span>
-          <span className="menu-item-label">Profile</span>
-        </a>
+          <span className="menu-item-label">My Profile</span>
+        </Link>
       </li>
       <li>
         <a href="login.html">
