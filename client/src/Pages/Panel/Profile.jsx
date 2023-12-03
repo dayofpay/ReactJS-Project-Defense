@@ -1,9 +1,23 @@
-import Titlebar from "../../components/private/Panel/Titlebar";
-import Navigation from "../../components/private/Panel/Navigation";
-import Sidebar from "../../components/private/Panel/Sidebar";
 import WithPanelLayout from "../../HOC/withPanelLayout";
-
+import { useContext,useState,useEffect } from "react";
+import AuthContext from "../../contexts/authContext";
+import getAvatar from "../../utils/getAvatar";
 export default function Profile(){
+  const {username,email} = useContext(AuthContext);
+  const [avatarUrl, setAvatarUrl] = useState('');
+
+  useEffect(() => {
+    const fetchAvatarUrl = async () => {
+      try {
+        const avatar = await getAvatar(email);
+        setAvatarUrl(`https://gravatar.com/avatar/${avatar}.jpg`);
+      } catch (error) {
+        console.error('Error fetching avatar:', error);
+      }
+    };
+
+    fetchAvatarUrl();
+  }, [email]);
     return(
 
         <WithPanelLayout>
@@ -25,20 +39,20 @@ export default function Profile(){
         </header>
         <div className="card-content">
           <div className="image w-48 h-48 mx-auto">
-            <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="John Doe" className="rounded-full"/>
+            <img src={avatarUrl} alt={username} className="rounded-full"/>
           </div>
 
           <div className="field">
             <label className="label">Name</label>
             <div className="control">
-              <input type="text" readOnly={true} value="John Doe" className="input is-static"/>
+              <input type="text" readOnly={true} value={username} className="input is-static"/>
             </div>
           </div>
           <hr/>
           <div className="field">
             <label className="label">E-mail</label>
             <div className="control">
-              <input type="text" readOnly={true} value="user@example.com" className="input is-static"/>
+              <input type="text" readOnly={true} value={email} className="input is-static"/>
             </div>
           </div>
         </div>
