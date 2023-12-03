@@ -8,6 +8,14 @@ export default function Logout(){
     const {logoutHandler} = useContext(AuthContext);
 
     useEffect(() => {
-        authServices.logout().then(() => {logoutHandler()}).catch(() => {navigate(PATH_LIST.home),localStorage.clear()});
-    },[])
+        authServices.logout()
+          .then(() => {
+            logoutHandler();
+          })
+          .catch(() => {
+            navigate(PATH_LIST.home);
+            localStorage.clear();
+          });
+      }, []);
+      
 }

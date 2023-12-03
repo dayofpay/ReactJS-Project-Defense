@@ -21,8 +21,7 @@ export async function getUserCoursesList(userEmail) {
 
     }
   } catch (error) {
-
-    console.error("Error fetching courses:", error);
+    throw new Error('Error while trying to fetch courses !');
 
   }
   return courseList
@@ -72,7 +71,8 @@ try {
 } catch (error) {
 
   console.error("Error fetching courses:", error);
-
+  localStorage.clear();
+  location.href = "/login";
 }
 return courseList
 }

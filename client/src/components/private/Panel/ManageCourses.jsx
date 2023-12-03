@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import { withAllCourses } from "../../../HOC/withCourseList"
+import  withAllCourses  from "../../../HOC/withCourseList";
 import convertTimestamp from "../../../utils/timeConvert";
 import { useState } from "react";
-function ShowCourses({courseList}){
+import { deleteCourse } from "../../../services/courseServices";
+import { getAllCourses } from "../../../services/userServices";
+
+function ShowCourses({courseList,setCourseList}){
     const DataLabels = {
         'CourseName' : 'course-name',
         'CourseStudents' : 'course-students',
@@ -13,6 +16,19 @@ function ShowCourses({courseList}){
     }
     const [showModal,setShowUserModal] = useState(false);
     const [deleteCourseId,setDeleteCourseId] = useState(0);
+    const [courseIsDeleted,setCourseDeleted] = useState(false);
+    const handleDeleteCourse = async (courseId) => {
+      try {
+        await deleteCourse(courseId);
+        setCourseDeleted(true);
+        setShowUserModal(!showModal);
+        const updatedCourses = await getAllCourses();
+
+        setCourseList(updatedCourses);
+      } catch (error) {
+        console.error("Error deleting course:", error);
+      }
+    };
     return (
         <>
 
@@ -72,6 +88,9 @@ function ShowCourses({courseList}){
                 <button className="button small red --jb-modal" onClick={() => {setShowUserModal(!showModal),setDeleteCourseId(course._id)}} data-target="sample-modal" type="button">
                   <span className="icon"><i className="mdi mdi-trash-can"></i></span>
                 </button>
+                <Link to={"/course-edit/" + course._id} className="button small green --jb-modal" type="button" variant="primary">
+                  <span className="icon"><i className="mdi mdi-file-document-edit"></i></span>
+                </Link>
               </div>
             </td>
           </tr>)}
@@ -89,13 +108,17 @@ function ShowCourses({courseList}){
     </div>
     {showModal && (
         <div>
-                    <h1>Are you sure, that you want to delete this Course (ID: {deleteCourseId}) ?</h1>
-        <ul>
-            <Link to={"/delete-course/" + deleteCourseId}>Yes</Link>
+          <h1>Are you sure you want to delete this Course (ID: {deleteCourseId})?</h1>
+          <ul>
+            {/* Pass the course ID to the handler */}
+            <Link onClick={() => handleDeleteCourse(deleteCourseId)}>Yes</Link>
             <button onClick={() => setShowUserModal(!showModal)}>No</button>
-        </ul>
+          </ul>
         </div>
-          )}
+      )}
+    {courseIsDeleted && (
+      <p>Success</p>
+    )}
 
         </>
     )
@@ -103,6 +126,6 @@ function ShowCourses({courseList}){
 
 
 
-const ManagageCourses = withAllCourses(ShowCourses);
+const ManagageCourses = withAllCourses(ShowCourses)
 
 export default ManagageCourses;

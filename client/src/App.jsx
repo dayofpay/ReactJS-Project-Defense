@@ -7,7 +7,7 @@ const PublicLogin = lazy(() => import('./components/private/Auth/Login'));
 import { AuthProvider } from './contexts/authContext';
 import ProtectedRoute from './contexts/protectContext';
 import Profile from './Pages/Panel/Profile';
-
+import ErrorBoundary from './hooks/useErrorBoundary';
 import ShowCourses from './Pages/Panel/ManageCourses';
 const Logout = lazy(() => import('./components/private/Auth/Logout'));
 const Register = lazy(() => import('./components/private/Auth/Register'));
@@ -17,7 +17,8 @@ const ShowDashboard = lazy(() => import('./Pages/Panel/Dashboard'));
 function App() {
   return (
     <>
-    <AuthProvider>
+  <ErrorBoundary>
+  <AuthProvider>
 <Suspense fallback={<div>Loading</div>}>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -33,6 +34,8 @@ function App() {
       </Routes>
       </Suspense>
       </AuthProvider>
+  </ErrorBoundary>
+
     </>
 
   );

@@ -1,46 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
-import AuthContext from "../contexts/authContext";
-import { getAllCourses, getUserCoursesList } from "../services/userServices";
-export default function withCourseList(Component) {
+import { useState,useEffect } from "react";
+import { getAllCourses } from "../services/userServices";
+export default function withAllCourses(Component) {
   return function EnhancedComponent(props) {
-    const { email } = useContext(AuthContext);
     const [courseList, setCourseList] = useState([]);
 
     useEffect(() => {
-      const fetchCourseList = async () => {
+      const fetchAllCourses = async () => {
         try {
-          const response = await getUserCoursesList(email);
-          console.log(response);
+          const response = await getAllCourses();
           setCourseList(response);
         } catch (error) {
-          console.error("Error fetching user courses:", error);
+          console.error('Error while trying to fetch all courses:', error);
         }
       };
 
-      fetchCourseList();
-    }, [email]);
-
-    return <Component {...props} courseList={courseList} />;
-  };
-}
-
-export function withAllCourses(Component){
-  return function EnhancedComponent(props){
-    const [courseList,setCourseList] = useState([]);
-
-    useEffect(() => {
-      const fetchAllCourses = async() => {
-        try{
-          const response = await getAllCourses();
-          setCourseList(response);
-        }catch(error){
-          console.error('Error while trying to fetch all xcourses');
-        }
-      }
-
       fetchAllCourses();
-    },[]);
+    }, []);
 
-    return <Component {...props} courseList={courseList} />
-  }
+    return <Component {...props} courseList={courseList} setCourseList={setCourseList} />;
+  };
 }

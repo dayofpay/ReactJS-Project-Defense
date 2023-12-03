@@ -1,4 +1,4 @@
-const buildOptions = (data) => {
+const buildOptions = (data, isAdmin = false) => {
     const options = {};
 
     if (data) {
@@ -9,35 +9,41 @@ const buildOptions = (data) => {
     }
 
     const accessToken = localStorage.getItem('accessToken');
-
-    if(accessToken){
+    if (accessToken) {
         options.headers = {
             ...options.headers,
-            'X-Authorization' : accessToken,
-        }
+            'X-Authorization': accessToken,
+        };
+    }
+
+    if (isAdmin) {
+        options.headers = {
+            ...options.headers,
+            'X-Admin': 'true',
+        };
     }
 
     return options;
 };
 
-const request = async (method, url, data) => {
+const request = async (method, url, data, isAdmin = false) => {
     const response = await fetch(url, {
-        ...buildOptions(data),
+        ...buildOptions(data, isAdmin),
         method,
     });
 
-    if(response.status === 204){
+    if (response.status === 204) {
         return {};
     }
     const result = await response.json();
-    if(!response.ok){
+    if (!response.ok) {
         throw result;
     }
     return result;
 };
 
-export const get = request.bind(null, 'GET');
-export const post = request.bind(null, 'POST');
-export const put = request.bind(null, 'PUT');
-export const remove = request.bind(null, 'DELETE');
-export const patch = request.bind(null, 'PATCH');
+export const get = (url, isAdmin = false) => request('GET', url, null, isAdmin);
+export const post = (url, data, isAdmin = false) => request('POST', url, data, isAdmin);
+export const put = (url, data, isAdmin = false) => request('PUT', url, data, isAdmin);
+export const remove = (url, isAdmin = false) => request('DELETE', url, null, isAdmin);
+export const patch = (url, data, isAdmin = false) => request('PATCH', url, data, isAdmin);
