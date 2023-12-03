@@ -12,12 +12,9 @@ export const login = async (email,password) => {
 
 export const register = async (email,password) => {
 
-    const initalRegisterValues = {
-        balance : 0,
-        isStaff : false,
-    }
+
     const username = email.split('@')?.[0];
-    const result = await request.post(`${baseUrl}/register`,{email,password,...initalRegisterValues,username});
+    const result = await request.post(`${baseUrl}/register`,{email,password,username});
     return result; 
 }
 

@@ -1,8 +1,13 @@
-import { useContext } from "react"
-import AuthContext from "../../../contexts/authContext"
-
+import { useState } from "react"
+import { useEffect } from "react"
+import { isUserStaff } from "../../../services/userServices";
 export default function Sidebar(){
-  const {isStaff} = useContext(AuthContext);
+  const [isStaff,setStaffState] = useState(false);
+  useEffect(() => {
+   isUserStaff().then((response) => {
+    setStaffState(response);
+   })
+  },[])
     return (
         <aside className="aside is-placed-left is-expanded">
   <div className="aside-tools">

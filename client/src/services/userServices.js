@@ -27,3 +27,16 @@ export async function getUserCoursesList(userId) {
   }
   return courseList
 }
+export async function isUserStaff(){
+  const match = JSON.parse(localStorage.getItem('auth'))['_id']
+
+  const encodedMatch = encodeURIComponent(match);
+  
+  const query = new URLSearchParams({ 'where': `_ownerId="${encodedMatch}"` });
+  
+  const url = `http://localhost:3030/data/user_details?${query}`;
+  
+
+  const result = await request.get(url);
+  return result?.[0]?.['isStaff'];
+}

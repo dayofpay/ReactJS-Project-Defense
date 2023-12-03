@@ -1365,16 +1365,24 @@
                 "_createdOn": 1701564918920,
                 "_id": "f1346126-b62f-4151-b6dc-1a43a2b1ba40",
             }
-        }
+        },
+        user_details : [{
+            "_ownerId": "86bf67e3-4e54-41d7-a711-3286af00d145",
+            "email": "test@abv.bg",
+            "balance": 0,
+            "isStaff": true,
+            "_createdOn": 1701577641645,
+            "_id": "71ec20be-4f1d-4033-b974-4f1a1f51f267"
+        }]
     };
     var rules$1 = {
     	users: {
-    		".create": false,
+    		".create": true,
     		".read": [
     			"Owner"
     		],
-    		".update": false,
-    		".delete": false
+    		".update": true,
+    		".delete": true
     	},
     	members: {
     		".update": "isOwner(user, get('teams', data.teamId))",
