@@ -11,6 +11,7 @@ export default function withCourseList(Component) {
       const fetchCourseList = async () => {
         try {
           const response = await getUserCoursesList(id);
+          console.log(response);
           setCourseList(response);
         } catch (error) {
           console.error("Error fetching user courses:", error);

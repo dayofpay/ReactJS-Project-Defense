@@ -40,3 +40,16 @@ export async function isUserStaff(){
   const result = await request.get(url);
   return result?.[0]?.['isStaff'];
 }
+
+export async function createUserSettings(email){
+  const url = 'http://localhost:3030/data/user_details';
+
+  const result = request.post(url,{
+    email,
+    "balance": 0,
+    "isStaff": false,
+  });
+
+
+  return result;
+}

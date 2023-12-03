@@ -1373,7 +1373,28 @@
             "isStaff": true,
             "_createdOn": 1701577641645,
             "_id": "71ec20be-4f1d-4033-b974-4f1a1f51f267"
-        }]
+        },
+         {
+            _ownerId : "35c62d76-8152-4626-8712-eeb96381bea8",
+            email: "peter@abv.bg",
+            balance : 0,
+            isStaff : false,
+
+        },
+        {
+            _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+            email: "george@abv.bg",
+            balance : 0,
+            isStaff : false,
+
+        },
+        {
+            _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+            email: "admin@abv.bg",
+            balance : 0,
+            isStaff : true,
+        }
+    ]
     };
     var rules$1 = {
     	users: {

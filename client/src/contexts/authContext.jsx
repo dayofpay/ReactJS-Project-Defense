@@ -2,9 +2,10 @@ import { createContext} from "react";
 import * as authService from '../services/authServices'
 import { useNavigate } from "react-router-dom";
 
-import * as request from '../lib/request';
+
 import usePersistedState from "../hooks/usePersistedState";
 import PATH_LIST from "../utils/PathList";
+import { createUserSettings } from "../services/userServices";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({
@@ -35,15 +36,12 @@ export const AuthProvider = ({
       }
       setAuth(result);
       localStorage.setItem('accessToken',result.accessToken)
-      const initalRegisterValues = {
-        balance : 0,
-        isStaff : false,
-    }
+      await createUserSettings(email);
     
     }
     const logoutHandler = () => {
       setAuth({});
-      localStorage.removeItem('accessToken');
+      localStorage.clear();
     
       navigate(PATH_LIST.home);
     }
@@ -57,6 +55,7 @@ export const AuthProvider = ({
       email: auth.email,
       isAuthenticated: !!auth.email,
       token: auth.accessToken,
+      id : auth._id,
       logoutHandler,
   } 
      return (
