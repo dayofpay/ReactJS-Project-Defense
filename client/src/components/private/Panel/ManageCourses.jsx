@@ -92,7 +92,7 @@ function ShowCourses({courseList}){
                     <h1>Are you sure, that you want to delete this Course (ID: {deleteCourseId}) ?</h1>
         <ul>
             <Link to={"/delete-course/" + deleteCourseId}>Yes</Link>
-            <Link>No</Link>
+            <button onClick={() => setShowUserModal(!showModal)}>No</button>
         </ul>
         </div>
           )}
