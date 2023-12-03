@@ -3,13 +3,13 @@ import AuthContext from "../contexts/authContext";
 import { getAllCourses, getUserCoursesList } from "../services/userServices";
 export default function withCourseList(Component) {
   return function EnhancedComponent(props) {
-    const { id } = useContext(AuthContext);
+    const { email } = useContext(AuthContext);
     const [courseList, setCourseList] = useState([]);
 
     useEffect(() => {
       const fetchCourseList = async () => {
         try {
-          const response = await getUserCoursesList(id);
+          const response = await getUserCoursesList(email);
           console.log(response);
           setCourseList(response);
         } catch (error) {
@@ -18,7 +18,7 @@ export default function withCourseList(Component) {
       };
 
       fetchCourseList();
-    }, [id]);
+    }, [email]);
 
     return <Component {...props} courseList={courseList} />;
   };

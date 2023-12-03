@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { withAllCourses } from "../../../HOC/withCourseList"
 import convertTimestamp from "../../../utils/timeConvert";
 import { useState } from "react";
@@ -11,9 +12,7 @@ function ShowCourses({courseList}){
         'Course_ID' : 'course_id',
     }
     const [showModal,setShowUserModal] = useState(false);
-    const toggleModal = () => {
-        setShowUserModal(!showModal);
-    }
+    const [deleteCourseId,setDeleteCourseId] = useState(0);
     return (
         <>
 
@@ -64,12 +63,13 @@ function ShowCourses({courseList}){
             <td data-label={DataLabels.CourseCreationDate}>
               <small className="text-gray-500" title={convertTimestamp(course._createdOn)}>{convertTimestamp(course._createdOn)}</small>
             </td>
+            <td data-label={DataLabels.Course_ID}>{course._id}</td>
             <td className="actions-cell">
               <div className="buttons right nowrap">
                 <button className="button small green --jb-modal" type="button" variant="primary">
                   <span className="icon"><i className="mdi mdi-eye"></i></span>
                 </button>
-                <button className="button small red --jb-modal" onClick={() => setShowUserModal(!showModal)} data-target="sample-modal" type="button">
+                <button className="button small red --jb-modal" onClick={() => {setShowUserModal(!showModal),setDeleteCourseId(course._id)}} data-target="sample-modal" type="button">
                   <span className="icon"><i className="mdi mdi-trash-can"></i></span>
                 </button>
               </div>
@@ -89,10 +89,10 @@ function ShowCourses({courseList}){
     </div>
     {showModal && (
         <div>
-                    <h1>Are you sure, that you want to delete this Course ?</h1>
+                    <h1>Are you sure, that you want to delete this Course (ID: {deleteCourseId}) ?</h1>
         <ul>
-            <li>Yes</li>
-            <li>No</li>
+            <Link to={"/delete-course/" + deleteCourseId}>Yes</Link>
+            <Link>No</Link>
         </ul>
         </div>
           )}

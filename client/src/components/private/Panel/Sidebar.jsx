@@ -20,23 +20,23 @@ export default function Sidebar(){
     <p className="menu-label">Members</p>
     <ul className="menu-list">
       <li className="--set-active-index-html">
-        <a href="index.html">
+        <Link to="/dashboard">
           <span className="icon"><i className="mdi mdi-desktop-mac"></i></span>
           <span className="menu-item-label">Dashboard</span>
-        </a>
+        </Link>
       </li>
     </ul>
     {isStaff && (
       <>
 <p className="menu-label">[STAFF]</p>
       <ul className="menu-list">
-      <li className="active">
+      <li>
         <a href="tables.html">
           <span className="icon"><i className="mdi mdi-table"></i></span>
           <span className="menu-item-label">Tables</span>
         </a>
       </li>
-      <li className="--set-active-forms-html">
+      <li className="">
         <Link to="/manage-courses">
           <span className="icon"><i className="mdi mdi-square-edit-outline"></i></span>
           <span className="menu-item-label">Manage Courses</span>

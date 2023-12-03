@@ -1350,7 +1350,7 @@
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "course_id" : "28383873",
                 "course_name" : "Learn english free",
-                "course_students" : ["35c62d76-8152-4626-8712-eeb96381bea8"],
+                "course_students" : ["admin@abv.bg"],
                 "course_price" : 0,
                 "course_details" : {
                     "firstLine" : "test",

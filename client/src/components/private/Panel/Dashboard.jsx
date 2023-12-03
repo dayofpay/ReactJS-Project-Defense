@@ -62,6 +62,7 @@ function ShowDashboard({courseList}){
             <td data-label={DataLabels.CourseCreationDate}>
               <small className="text-gray-500" title={convertTimestamp(course._createdOn)}>{convertTimestamp(course._createdOn)}</small>
             </td>
+            <td data-label={DataLabels.Course_ID}>{course._id}</td>
             <td className="actions-cell">
               <div className="buttons right nowrap">
                 <button className="button small green --jb-modal" data-target="sample-modal-2" type="button">
