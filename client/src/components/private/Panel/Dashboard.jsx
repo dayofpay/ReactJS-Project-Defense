@@ -3,7 +3,14 @@ import convertTimestamp from "../../../utils/timeConvert";
 import UserStats from "./Statistics/User"
 
 function ShowDashboard({courseList}){
-
+    const DataLabels = {
+        'CourseName' : 'course-name',
+        'CourseStudents' : 'course-students',
+        'CoursePrice' : 'course-price',
+        'CourseCategory' : 'course-category',
+        'CourseCreationDate' : 'course-creation',
+        'Course_ID' : 'course_id',
+    }
     return (
         <>
                 <section className="is-title-bar">
@@ -57,12 +64,12 @@ function ShowDashboard({courseList}){
                 <img src={course.course_image} className="rounded-full"/>
               </div>
             </td>
-            <td data-label="Name">{course.course_name}</td>
-            <td data-label="Company">{course.course_students.length}</td>
-            <td data-label="City">{course.course_price} $</td>
-            <td data-label="course-category">{course.course_category}</td>
-            <td data-label="Created">
-              <small className="text-gray-500" title="Oct 25, 2021">{convertTimestamp(course._createdOn)}</small>
+            <td data-label={DataLabels.CourseName}>{course.course_name}</td>
+            <td data-label={DataLabels.CourseStudents}>{course.course_students.length}</td>
+            <td data-label={DataLabels.CoursePrice}>{course.course_price} $</td>
+            <td data-label={DataLabels.CourseCategory}>{course.course_category}</td>
+            <td data-label={DataLabels.CourseCreationDate}>
+              <small className="text-gray-500" title={convertTimestamp(course._createdOn)}>{convertTimestamp(course._createdOn)}</small>
             </td>
             <td className="actions-cell">
               <div className="buttons right nowrap">
