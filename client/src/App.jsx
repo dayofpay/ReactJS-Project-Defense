@@ -7,6 +7,8 @@ const PublicLogin = lazy(() => import('./components/private/Auth/Login'));
 import { AuthProvider } from './contexts/authContext';
 import ProtectedRoute from './contexts/protectContext';
 import Profile from './Pages/Panel/Profile';
+
+import ShowCourses from './Pages/Panel/ManageCourses';
 const Logout = lazy(() => import('./components/private/Auth/Logout'));
 const Register = lazy(() => import('./components/private/Auth/Register'));
 const ShowDashboard = lazy(() => import('./Pages/Panel/Dashboard'));
@@ -26,6 +28,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path='/dashboard' element={<ShowDashboard/>}/>
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/manage-courses' element={<ShowCourses/>}/>
         </Route>
       </Routes>
       </Suspense>

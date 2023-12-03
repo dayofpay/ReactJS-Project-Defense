@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import { isUserStaff } from "../../../services/userServices";
+import { Link } from "react-router-dom";
 export default function Sidebar(){
   const [isStaff,setStaffState] = useState(false);
   useEffect(() => {
@@ -36,10 +37,10 @@ export default function Sidebar(){
         </a>
       </li>
       <li className="--set-active-forms-html">
-        <a href="forms.html">
+        <Link to="/manage-courses">
           <span className="icon"><i className="mdi mdi-square-edit-outline"></i></span>
-          <span className="menu-item-label">Forms</span>
-        </a>
+          <span className="menu-item-label">Manage Courses</span>
+        </Link>
       </li>
       <li className="--set-active-profile-html">
         <a href="profile.html">
