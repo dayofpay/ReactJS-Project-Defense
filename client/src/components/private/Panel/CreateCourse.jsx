@@ -2,18 +2,10 @@ import { useContext } from "react";
 import useForm from "../../../hooks/useForm";
 import AuthContext from "../../../contexts/authContext";
 import styles from "../../../../public/css/custom.module.css";
+import { CreateCourseKeys } from "../../../keys/form-keys";
 export default function CreateCourse(){
 
-    const CreateCourseKeys = {
-        CourseName : 'course-name',
-        CourseCategory : 'course-category',
-        CoursePrice : 'course-price',
-        CourseDifficulity : 'course-difficulity',
-        InstructorName : 'instructor-name',
-        CourseImage : 'course-image',
-        CourseDescription : 'course-description'
 
-    };
     const {createCourseSubmitHandler} = useContext(AuthContext)
     const { values, onChange, onSubmit, errors } = useForm(
         createCourseSubmitHandler,

@@ -27,7 +27,6 @@ export default function useForm(submitHandler, initialValues, validatorSettings)
   const onChange = (event) => {
     const fieldName = event.target.name;
     const fieldValue = event.target.value;
-
     setValues((state) => ({
       ...state,
       [fieldName]: fieldValue,
@@ -66,5 +65,6 @@ export default function useForm(submitHandler, initialValues, validatorSettings)
     onChange,
     onSubmit,
     errors,
+    setValues
   };
 }

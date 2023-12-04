@@ -85,6 +85,7 @@
             let status = 200;
             let headers = {
                 'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods' : "*",
                 'Content-Type': 'application/json'
             };
             let result = '';
@@ -93,9 +94,10 @@
             // NOTE: the OPTIONS method results in undefined result and also it never processes plugins - keep this in mind
             if (method == 'OPTIONS') {
                 Object.assign(headers, {
-                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS, PATCH',
                     'Access-Control-Allow-Credentials': false,
                     'Access-Control-Max-Age': '86400',
+
                     'Access-Control-Allow-Headers': 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, X-Authorization, X-Admin'
                 });
             } else {

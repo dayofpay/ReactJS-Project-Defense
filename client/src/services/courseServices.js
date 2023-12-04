@@ -18,3 +18,9 @@ export async function getCourseData(courseId){
 
     return result;
 }
+
+export async function editCourse(courseId,updateData){
+    const result = await request.patch('http://localhost:3030/data/courses/' + courseId,{...updateData},true);
+
+    return result;
+}

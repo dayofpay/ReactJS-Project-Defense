@@ -5,52 +5,31 @@ import styles from "../../../../public/css/custom.module.css";
 import { getCourseData } from "../../../services/courseServices";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import { EditCourseKeys } from "../../../keys/form-keys";
 export default function EditCourse(){
 
-    const EditCourseKeys = {
-        CourseName : 'course-name',
-        CourseCategory : 'course-category',
-        CoursePrice : 'course-price',
-        CourseDifficulity : 'course-difficulity',
-        InstructorName : 'instructor-name',
-        CourseImage : 'course-image',
-        CourseDescription : 'course-description'
 
-    };
     const {id} = useParams();
     const navigate = useNavigate();
     const [courseData,setCourseData] = useState([]);
-    useEffect(() => {
-        const getData = async () => {
-            return await getCourseData(id);
-        };
-
-        getData().then((result) => {
-            setCourseData(result);
-        }).catch((error) => {
-            navigate('/dashboard');
-        });
 
 
-    },[]);
 
-
-    const {createCourseSubmitHandler} = useContext(AuthContext)
-    const { onChange, onSubmit, errors } = useForm(
-        createCourseSubmitHandler,
+    const {editCourseSubmitHandler} = useContext(AuthContext)
+    const {values,onChange, onSubmit, errors,setValues } = useForm(
+        editCourseSubmitHandler,
         {
-            [EditCourseKeys.CourseName]: courseData?.["course_name"] || "",
-            [EditCourseKeys.CourseImage]: courseData?.["course_image"] || "",
-            [EditCourseKeys.CourseCategory]: courseData?.["course_category"] || "",
-            [EditCourseKeys.CoursePrice]: courseData?.["course_price"] || "",
-            [EditCourseKeys.CourseDifficulity]: courseData?.["course_difficulity"] || "",
-            [EditCourseKeys.InstructorName]:
-              courseData?.["course_lecturers"]?.["lecturers_list"] || "",
-            [EditCourseKeys.CourseDescription]:
-              courseData?.["course_description"] || "",
-        },
+            [EditCourseKeys.CourseName]: "",
+            [EditCourseKeys.CourseImage]: "",
+            [EditCourseKeys.CourseCategory]: "",
+            [EditCourseKeys.CoursePrice]: "",
+            [EditCourseKeys.CourseDifficulity]: "",
+            [EditCourseKeys.InstructorName]: "",
+            [EditCourseKeys.CourseDescription]: "",
+          },
         {
           [EditCourseKeys.CourseImage]: (value) => {
+            console.log(value);
             if (!value) {
               return "Please provide a course image URL";
             }
@@ -95,6 +74,32 @@ export default function EditCourse(){
           },
         }
       );
+      useEffect(() => {
+        const getData = async () => {
+          try {
+            const result = await getCourseData(id);
+            setCourseData(result);
+            setValues({
+              [EditCourseKeys.CourseName]: result?.["course_name"] || "",
+              [EditCourseKeys.CourseImage]: result?.["course_image"] || "",
+              [EditCourseKeys.CourseCategory]: result?.["course_category"] || "",
+              [EditCourseKeys.CoursePrice]: result?.["course_price"] || "",
+              [EditCourseKeys.CourseDifficulity]: result?.["course_details"]["course_difficulity"] || "",
+              [EditCourseKeys.InstructorName]: result?.["course_lecturers"]?.["lecturers_list"] || "",
+              [EditCourseKeys.CourseDescription]: result?.["course_description"] || "",
+              [EditCourseKeys.CourseId] : result?.["_id"] || "",
+            });
+          } catch (error) {
+            navigate('/dashboard');
+          }
+        };
+    
+        getData();
+      }, [id, navigate, setValues]);
+    
+      if (!courseData) {
+        return <div>Loading</div>;
+      }
 return(
 <>
     <section className="is-hero-bar">
@@ -113,54 +118,56 @@ return(
             </header>
             <div className="card-content">
                 <form onSubmit={onSubmit}>
+                    <input type="hidden" name={EditCourseKeys.CourseId} defaultValue={values[EditCourseKeys.CourseId]} />
                     <div className="field">
                         <label className="label">Course name</label>
                         <div className="field-body">
                             <div className="field">
                                 <div className="control icons-left">
-                                    <input className="input" name={EditCourseKeys.CourseName} onChange={onChange} type="text" placeholder="Course name" value={courseData["course_name"] ? courseData["course_name"] : "" } />
+                                <input className="input" name={EditCourseKeys.CourseName} onChange={onChange}
+                                    type="text" placeholder="Course name" value={values[EditCourseKeys.CourseName]} />
                                     <span className="icon left"><i className="mdi mdi-account"></i></span>
                                 </div>
                             </div>
                             <div className="field">
                             <label className="label">Course Category</label>
                                 <div className="control icons-left">
-                                    <input className="input" name={EditCourseKeys.CourseCategory} onChange={onChange} type="text" placeholder="Course category" value={courseData["course_category"] ? courseData["course_category"] : "" } />
+                                    <input className="input" name={EditCourseKeys.CourseCategory} onChange={onChange} type="text" placeholder="Course category" value={values[EditCourseKeys.CourseCategory]} />
                                     <span className="icon left"><i className="mdi mdi-account"></i></span>
                                 </div>
                             </div>
                             <div className="field">
                             <label className="label">Course Price</label>
                                 <div className="control icons-left">
-                                    <input className="input" type="number" name={EditCourseKeys.CoursePrice} onChange={onChange} placeholder="Course price" value={courseData["course_price"] ? courseData["course_price"] : "" } />
+                                    <input className="input" type="number" name={EditCourseKeys.CoursePrice} onChange={onChange} placeholder="Course price" value={values[EditCourseKeys.CoursePrice]} />
                                     <span className="icon left"><i className="mdi mdi-account"></i></span>
                                 </div>
                             </div>
                             <div className="field">
                             <label className="label">Course Difficulity</label>
                                 <div className="control icons-left">
-                                    <input className="input" type="text" name={EditCourseKeys.CourseDifficulity} onChange={onChange} placeholder="Course difficulity" value={courseData?.["course_details"]?.["course_difficulity"] ? courseData["course_details"]?.["course_difficulity"] : "" } />
+                                    <input className="input" type="text" name={EditCourseKeys.CourseDifficulity} onChange={onChange} placeholder="Course difficulity" value={values[EditCourseKeys.CourseDifficulity]} />
                                     <span className="icon left"><i className="mdi mdi-account"></i></span>
                                 </div>
                             </div>
                             <div className="field">
                             <label className="label">Instructor Name</label>
                                 <div className="control icons-left">
-                                    <input className="input" type="text" name={EditCourseKeys.InstructorName} onChange={onChange} placeholder="Instructor name" value={courseData?.["course_lecturers"]?.["lecturers_list"] ? courseData["course_lecturers"]["lecturers_list"] : "" }/>
+                                    <input className="input" type="text" name={EditCourseKeys.InstructorName} onChange={onChange} placeholder="Instructor name" value={values[EditCourseKeys.InstructorName]}/>
                                     <span className="icon left"><i className="mdi mdi-account"></i></span>
                                 </div>
                             </div>
                             <div className="field">
                             <label className="label">Course Image</label>
                                 <div className="control icons-left">
-                                    <input className="input" type="text" name={EditCourseKeys.CourseImage} onChange={onChange} placeholder="Course Image" value={courseData["course_image"] ? courseData["course_image"] : "" }/>
+                                    <input className="input" type="text" name={EditCourseKeys.CourseImage} onChange={onChange} placeholder="Course Image" value={values[EditCourseKeys.CourseImage]}/>
                                     <span className="icon left"><i className="mdi mdi-account"></i></span>
                                 </div>
                             </div>
                             <div className="field">
                                 <label className="label">Course Description</label>
                                 <div className="control">
-              <textarea className="textarea" name={EditCourseKeys.CourseDescription} onChange={onChange} placeholder="Enter course description" value={courseData["course_description"] ? courseData["course_description"] : "" }></textarea>
+              <textarea className="textarea" name={EditCourseKeys.CourseDescription} onChange={onChange} placeholder="Enter course description" value={values[EditCourseKeys.CourseDescription]}></textarea>
             </div>
 
                             </div>

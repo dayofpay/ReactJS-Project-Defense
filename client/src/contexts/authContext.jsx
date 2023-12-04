@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import usePersistedState from "../hooks/usePersistedState";
 import PATH_LIST from "../utils/PathList";
 import { createUserSettings } from "../services/userServices";
-import { createCourse } from "../services/courseServices";
+import { createCourse, editCourse } from "../services/courseServices";
+import { EditCourseKeys,CreateCourseKeys } from "../keys/form-keys";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({
@@ -42,34 +43,57 @@ export const AuthProvider = ({
     };
 
     const createCourseSubmitHandler = async (courseData) => {
-      console.log(courseData);
-      let courseObject = {
-        course_name : courseData["course-name"],
-        course_students : ["admin@abv.bg"], // Initial Value
-        course_price : Number(courseData["course-price"]),
-        course_image : courseData["course-image"],
-        course_details : {
-          'course_difficulity' : courseData["course-difficulity"],
 
+    
+      let courseObject = {
+        course_name: courseData[CreateCourseKeys.CourseName],
+        course_students: ["admin@abv.bg"], // Initial Value
+        course_price: Number(courseData[CreateCourseKeys.CoursePrice]),
+        course_image: courseData[CreateCourseKeys.CourseImage],
+        course_details: {
+          course_difficulity: courseData[CreateCourseKeys.CourseDifficulity],
         },
         course_lecturers: {
-          "lecture_list": [
-            courseData["instructor-name"],
-          ]
-      },
-      course_description : courseData["course-description"],
-      course_category : courseData["course-category"],
-      }
-
-      try{
+          lecturers_list: [courseData[CreateCourseKeys.InstructorName]],
+        },
+        course_description: courseData[CreateCourseKeys.CourseDescription],
+        course_category: courseData[CreateCourseKeys.CourseCategory],
+      };
+    
+      try {
         const result = await createCourse(courseObject);
-
+    
         console.log(result);
+      } catch (error) {
+        throw new Error('Error while trying to create course!', error);
       }
-      catch(error){
-        throw new Error('Error while trying to create course !',error);
+    };
+    
+    const editCourseSubmitHandler = async (courseData) => {
+      console.log(courseData);
+    
+      const courseObject = {
+        course_name: courseData[EditCourseKeys.CourseName],
+        course_price: Number(courseData[EditCourseKeys.CoursePrice]),
+        course_image: courseData[EditCourseKeys.CourseImage],
+        course_details: {
+          course_difficulty: courseData[EditCourseKeys.CourseDifficulty],
+        },
+        course_lecturers: {
+          lecture_list: [courseData[EditCourseKeys.InstructorName]],
+        },
+        course_description: courseData[EditCourseKeys.CourseDescription],
+        course_category: courseData[EditCourseKeys.CourseCategory],
+      };
+    
+      try {
+        const result = await editCourse(courseData[EditCourseKeys.CourseId], courseObject);
+    
+        console.log(result);
+      } catch (error) {
+        throw new Error('Error while trying to update course!', error);
       }
-    }
+    };
     const logoutHandler = () => {
       setAuth({});
       localStorage.clear();
@@ -88,6 +112,7 @@ export const AuthProvider = ({
       token: auth.accessToken,
       id : auth._id,
       createCourseSubmitHandler,
+      editCourseSubmitHandler,
       logoutHandler,
   } 
      return (

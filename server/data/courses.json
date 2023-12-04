@@ -1,20 +1,24 @@
 {
-        "3564027f-adcd-4425-b2c0-1253d2386c0c" : {
-            "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-            "course_id" : "28383873",
-            "course_name" : "Learn english free",
-            "course_students" : ["admin@abv.bg"],
-            "course_price" : 0,
-            "course_details" : {
-                "firstLine" : "test",
-                "secondLine" : "test"
+        "3564027f-adcd-4425-b2c0-1253d2386c0c" :     {
+            "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+            "course_name": "TEST",
+            "course_students": [
+                "admin@abv.bg"
+            ],
+            "course_price": 55,
+            "course_image": "https://www.istudy.org.uk/wp-content/uploads/2018/10/335-Complete-English-Course-Beginner-Level.jpg",
+            "course_details": {
+                "course_difficulity": "Easy"
             },
-            "course_image" : "https://www.istudy.org.uk/wp-content/uploads/2018/10/335-Complete-English-Course-Beginner-Level.jpg",
-            "course_description" : "Nothing here",
-            "course_category" : "Test",
-            "course_lecturers" : {
-                "lecturers_list" : ["test1","test2"]
+            "course_lecturers": {
+                "lecturers_list": [
+                    "Vladislav Ivanov"
+                ]
             },
-            "_createdOn": 1701564918920
+            "course_description": "ASDSDA",
+            "course_category": "Test35",
+            "_createdOn": 1701657320288,
+            "_updatedOn": 1701657325119,
+            "_id": "4c26eaf5-bc81-4d0c-8337-494a507f1921"
         }
 }
