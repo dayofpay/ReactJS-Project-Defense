@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import usePersistedState from "../hooks/usePersistedState";
 import PATH_LIST from "../utils/PathList";
 import { createUserSettings } from "../services/userServices";
+import { createCourse } from "../services/courseServices";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({
@@ -38,6 +39,36 @@ export const AuthProvider = ({
       localStorage.setItem('accessToken',result.accessToken)
       await createUserSettings(email);
     
+    };
+
+    const createCourseSubmitHandler = async (courseData) => {
+      console.log(courseData);
+      let courseObject = {
+        course_name : courseData["course-name"],
+        course_students : ["admin@abv.bg"], // Initial Value
+        course_price : Number(courseData["course-price"]),
+        course_image : courseData["course-image"],
+        course_details : {
+          'course_difficulity' : courseData["course-difficulity"],
+
+        },
+        course_lecturers: {
+          "lecture_list": [
+            courseData["instructor-name"],
+          ]
+      },
+      course_description : courseData["course-description"],
+      course_category : courseData["course-category"],
+      }
+
+      try{
+        const result = await createCourse(courseObject);
+
+        console.log(result);
+      }
+      catch(error){
+        throw new Error('Error while trying to create course !',error);
+      }
     }
     const logoutHandler = () => {
       setAuth({});
@@ -56,6 +87,7 @@ export const AuthProvider = ({
       isAuthenticated: !!auth.email,
       token: auth.accessToken,
       id : auth._id,
+      createCourseSubmitHandler,
       logoutHandler,
   } 
      return (
