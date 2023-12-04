@@ -9,11 +9,11 @@
                 "firstLine" : "test",
                 "secondLine" : "test"
             },
-            "course_image" : "https://bbst1.badabusiness.com/wp-content/uploads/2021/04/online-course-blog-header.jpg",
+            "course_image" : "https://www.istudy.org.uk/wp-content/uploads/2018/10/335-Complete-English-Course-Beginner-Level.jpg",
             "course_description" : "Nothing here",
             "course_category" : "Test",
             "course_lecturers" : {
-                "lecture_list" : ["test1","test2"]
+                "lecturers_list" : ["test1","test2"]
             },
             "_createdOn": 1701564918920
         }

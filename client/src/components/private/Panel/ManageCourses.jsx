@@ -88,7 +88,7 @@ function ShowCourses({courseList,setCourseList}){
                 <button className="button small red --jb-modal" onClick={() => {setShowUserModal(!showModal),setDeleteCourseId(course._id)}} data-target="sample-modal" type="button">
                   <span className="icon"><i className="mdi mdi-trash-can"></i></span>
                 </button>
-                <Link to={"/course-edit/" + course._id} className="button small green --jb-modal" type="button" variant="primary">
+                <Link to={"/edit-course/" + course._id} className="button small green --jb-modal" type="button" variant="primary">
                   <span className="icon"><i className="mdi mdi-file-document-edit"></i></span>
                 </Link>
               </div>

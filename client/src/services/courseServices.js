@@ -12,3 +12,9 @@ export async function createCourse(courseData){
 
     return result;
 }
+
+export async function getCourseData(courseId){
+    const result = await request.get('http://localhost:3030/data/courses/' + courseId,true);
+
+    return result;
+}

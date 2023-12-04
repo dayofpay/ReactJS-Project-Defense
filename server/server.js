@@ -1346,24 +1346,26 @@
     };
     var seedData = {
     	courses: {
-            "3564027f-adcd-4425-b2c0-1253d2386c0c" : {
-                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-                "course_id" : "28383873",
-                "course_name" : "Learn english free",
-                "course_students" : ["admin@abv.bg"],
-                "course_price" : 0,
-                "course_details" : {
-                    "firstLine" : "test",
-                    "secondLine" : "test"
+            "3564027f-adcd-4425-b2c0-1253d2386c0c" :     {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "course_name": "English B2",
+                "course_students": [
+                    "admin@abv.bg"
+                ],
+                "course_price": 155,
+                "course_details": {
+                    "course_difficulity": "Easy"
                 },
-                "course_image" : "https://bbst1.badabusiness.com/wp-content/uploads/2021/04/online-course-blog-header.jpg",
-                "course_description" : "Nothing here",
-                "course_category" : "Test",
-                "course_lecturers" : {
-                    "lecture_list" : ["test1","test2"]
+                "course_lecturers": {
+                    "lecturers_list": [
+                        "Vladislav Ivanov"
+                    ]
                 },
-                "_createdOn": 1701564918920,
-                "_id": "f1346126-b62f-4151-b6dc-1a43a2b1ba40",
+                "course_description": "Learn english fast !",
+                "course_category": "English Classes",
+                "course_image" : "https://www.istudy.org.uk/wp-content/uploads/2018/10/335-Complete-English-Course-Beginner-Level.jpg",
+                "_createdOn": 1701650639686,
+                "_id": "d1c975bf-839e-4f8a-9282-3560107b5ee0"
             }
         },
         user_details : [{
