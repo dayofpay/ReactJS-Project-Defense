@@ -40,7 +40,7 @@ function App() {
       </AuthProvider>
   </ErrorBoundary>
 
-    </>
+    </>// TODO ADMIN GUARDS FOR MANAGING COURSES ETC...
 
   );
 
