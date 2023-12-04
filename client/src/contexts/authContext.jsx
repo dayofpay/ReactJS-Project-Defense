@@ -77,10 +77,10 @@ export const AuthProvider = ({
         course_price: Number(courseData[EditCourseKeys.CoursePrice]),
         course_image: courseData[EditCourseKeys.CourseImage],
         course_details: {
-          course_difficulty: courseData[EditCourseKeys.CourseDifficulty],
+          course_difficulity: courseData[EditCourseKeys.CourseDifficulity],
         },
         course_lecturers: {
-          lecture_list: [courseData[EditCourseKeys.InstructorName]],
+          lecturers_list: [courseData[EditCourseKeys.InstructorName]],
         },
         course_description: courseData[EditCourseKeys.CourseDescription],
         course_category: courseData[EditCourseKeys.CourseCategory],
