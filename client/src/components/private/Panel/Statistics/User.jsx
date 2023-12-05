@@ -1,6 +1,6 @@
 
-import withCourseList from "../../../../HOC/withCourseList";
 import withUserCount from "../../../../HOC/withUserCount";
+import withUserCourseList from "../../../../HOC/withUserCourseList";
 function ShowUserStats({courseList,userCount}){
     // this will be the statistics that every user will see in their dashboard ...
     return(
@@ -57,5 +57,5 @@ function ShowUserStats({courseList,userCount}){
     )
 }
 
-const UserStats = withUserCount(withCourseList(ShowUserStats))
+const UserStats = withUserCount(withUserCourseList(ShowUserStats))
 export default UserStats;

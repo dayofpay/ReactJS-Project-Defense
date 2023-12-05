@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { EditCourseKeys } from "../../../keys/form-keys";
 import AddStudentToCourse from "./AddStudentToCourse";
+import RemoveStudent from "./RemoveStudentFromCourse";
 export default function EditCourse(){
 
 
@@ -104,7 +105,6 @@ export default function EditCourse(){
       if (!courseData) {
         return <div>Loading</div>;
       }
-      console.log(students);
 return(
 <>
     <section className="is-hero-bar">
@@ -189,7 +189,7 @@ return(
         </div>
         <div className="card mb-6"/>
       <AddStudentToCourse courseId={id}/>
-
+      <RemoveStudent courseId={id}/>
     </section>
 
 </>

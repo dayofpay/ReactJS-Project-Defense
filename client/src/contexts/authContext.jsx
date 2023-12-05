@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import usePersistedState from "../hooks/usePersistedState";
 import PATH_LIST from "../utils/PathList";
 import { createUserSettings } from "../services/userServices";
-import { addStudent, createCourse, editCourse } from "../services/courseServices";
+import { addStudent, createCourse, editCourse, removeStudent } from "../services/courseServices";
 import { EditCourseKeys,CreateCourseKeys } from "../keys/form-keys";
 export const AuthContext = createContext();
 
@@ -104,6 +104,15 @@ export const AuthProvider = ({
         throw new Error(error);
       }
     }
+    const removeStudentFromCourseHandkler = async(values) => {
+      console.log(values);
+      try{
+        await removeStudent(values?.["student-name"],values?.['course-id']);
+      }
+      catch(error){
+        throw new Error(error);
+      }
+    }
     const logoutHandler = () => {
       setAuth({});
       localStorage.clear();
@@ -125,6 +134,7 @@ export const AuthProvider = ({
       editCourseSubmitHandler,
       logoutHandler,
       addCourseStudentHandler,
+      removeStudentFromCourseHandkler
   } 
      return (
         <AuthContext.Provider value={logValues}>

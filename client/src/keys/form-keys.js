@@ -24,4 +24,9 @@ const AddStudentToCourseKeys = {
     StudentName : 'student-name',
     CourseId : 'course-id',
 }
-export {EditCourseKeys,CreateCourseKeys,AddStudentToCourseKeys}
+
+const RemoveStudentFromCourseKeys = {
+    StudentName : 'student-name',
+    CourseId : 'course-id',
+}
+export {EditCourseKeys,CreateCourseKeys,AddStudentToCourseKeys,RemoveStudentFromCourseKeys}

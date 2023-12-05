@@ -97,3 +97,11 @@ export async function getCourseStudents(courseId){
         throw new Error('Unable to fetch course data!',error.message);
     }
 }
+
+export async function getCourseList(){
+    const url = "http://localhost:3030/data/courses";
+
+    const result = await request.get(url,true);
+
+    return result;
+}
