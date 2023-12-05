@@ -35,9 +35,9 @@ export default function ShowUsers(){
             {user.map((user,index) =>           <tr key={index}>
             <td data-label="Email">{user.email}</td>
             <td data-label="Name">{getStudentName(user.email)}</td>
-            <td data-label="City">{user.balance} $</td>
-            <td data-label="City">{user.isStaff === true ? 'Yes' : 'No'}</td>
-            <td data-label="City">{user._id}</td>
+            <td data-label="Balance">{user.balance} $</td>
+            <td data-label="IsStaff">{user.isStaff === true ? 'Yes' : 'No'}</td>
+            <td data-label="UserId">{user._id}</td>
             <td className="actions-cell">
               <div className="buttons right nowrap">
                 <Link to={"/user-details/" + user._id} className="button small green --jb-modal" type="button">
