@@ -2,18 +2,18 @@ import { useContext, useEffect } from "react";
 import useForm from "../../../hooks/useForm";
 import AuthContext from "../../../contexts/authContext";
 import styles from "../../../../public/css/custom.module.css";
-import { getCourseData } from "../../../services/courseServices";
+import { addStudent, getCourseData, getCourseStudents } from "../../../services/courseServices";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { EditCourseKeys } from "../../../keys/form-keys";
+import AddStudentToCourse from "./AddStudentToCourse";
 export default function EditCourse(){
 
 
     const {id} = useParams();
     const navigate = useNavigate();
     const [courseData,setCourseData] = useState([]);
-
-
+    const [students,setStudent] = useState([]);
 
     const {editCourseSubmitHandler} = useContext(AuthContext)
     const {values,onChange, onSubmit, errors,setValues } = useForm(
@@ -96,10 +96,15 @@ export default function EditCourse(){
     
         getData();
       }, [id, navigate, setValues]);
-    
+      useEffect(() => {
+        getCourseStudents(id).then((response) => {
+          setStudent(response);
+        })
+      },[id])
       if (!courseData) {
         return <div>Loading</div>;
       }
+      console.log(students);
 return(
 <>
     <section className="is-hero-bar">
@@ -182,6 +187,8 @@ return(
       ))}
             </div>
         </div>
+        <div className="card mb-6"/>
+      <AddStudentToCourse courseId={id}/>
 
     </section>
 

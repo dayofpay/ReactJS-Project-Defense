@@ -1,4 +1,5 @@
 import withCourseList from "../../../HOC/withCourseList"
+import { addStudent } from "../../../services/courseServices";
 import convertTimestamp from "../../../utils/timeConvert";
 import UserStats from "./Statistics/User"
 

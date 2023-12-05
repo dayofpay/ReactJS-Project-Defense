@@ -19,4 +19,9 @@ const CreateCourseKeys = {
     CourseDescription : 'course-description'
 
 };
-export {EditCourseKeys,CreateCourseKeys}
+
+const AddStudentToCourseKeys = {
+    StudentName : 'student-name',
+    CourseId : 'course-id',
+}
+export {EditCourseKeys,CreateCourseKeys,AddStudentToCourseKeys}
