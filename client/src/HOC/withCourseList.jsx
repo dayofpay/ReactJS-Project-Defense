@@ -1,6 +1,6 @@
 // THIS WILL RETURN ALL COURSES IN THE COLLECTION
 
-import { useState,useEffect, useContext } from "react";
+import { useState,useEffect } from "react";
 import { getAllCourses } from "../services/userServices";
 export default function withAllCourses(Component) {
   return function EnhancedComponent(props) {
