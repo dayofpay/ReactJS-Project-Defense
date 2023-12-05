@@ -2,7 +2,6 @@
 
 import { useState,useEffect, useContext } from "react";
 import { getAllCourses } from "../services/userServices";
-import AuthContext from "../contexts/authContext";
 export default function withAllCourses(Component) {
   return function EnhancedComponent(props) {
     const [courseList, setCourseList] = useState([]);
