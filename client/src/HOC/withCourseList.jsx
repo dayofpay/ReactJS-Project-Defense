@@ -6,7 +6,7 @@ import AuthContext from "../contexts/authContext";
 export default function withAllCourses(Component) {
   return function EnhancedComponent(props) {
     const [courseList, setCourseList] = useState([]);
-    const {email} = useContext(AuthContext);
+
     useEffect(() => {
       const fetchAllCourses = async () => {
         try {
