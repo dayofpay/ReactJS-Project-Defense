@@ -92,3 +92,12 @@ export async function getUserDetails(studentEmail){
   return result[0]
 
 }
+
+
+export async function getUserList(){
+  const url = "http://localhost:3030/data/user_details";
+
+  const result = await request.get(url,true);
+
+  return result;
+}

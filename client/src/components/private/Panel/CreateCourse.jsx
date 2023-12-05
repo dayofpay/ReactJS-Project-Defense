@@ -135,7 +135,7 @@ return(
                             </div>
                         </div>
                     </div>
-                    <button type="submit">Create Course</button>
+                    <button type="submit" className="btn btn-primary">Create Course</button>
                 </form>
                 {Object.keys(errors).map((fieldName) => (
         <p key={fieldName} className={styles["error-message"]}>
