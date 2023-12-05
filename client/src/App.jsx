@@ -11,6 +11,7 @@ import ErrorBoundary from './hooks/useErrorBoundary';
 import ShowCourses from './Pages/Panel/ManageCourses';
 import ShowCreateCourse from './Pages/Panel/CreateCouse';
 import ShowEditCourse from './Pages/Panel/EditCourse';
+import ManageUsers from './Pages/Panel/ManageUsers';
 const Logout = lazy(() => import('./components/private/Auth/Logout'));
 const Register = lazy(() => import('./components/private/Auth/Register'));
 const ShowDashboard = lazy(() => import('./Pages/Panel/Dashboard'));
@@ -34,6 +35,7 @@ function App() {
           <Route path='/manage-courses' element={<ShowCourses/>}/>
           <Route path='/create-course' element={<ShowCreateCourse/>}/>
           <Route path='/edit-course/:id' element={<ShowEditCourse/>}/>
+          <Route path='/manage-users' element={<ManageUsers/>}/>
         </Route>
       </Routes>
       </Suspense>

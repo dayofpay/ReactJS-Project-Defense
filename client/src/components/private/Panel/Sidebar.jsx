@@ -43,7 +43,7 @@ export default function Sidebar(){
         </Link>
       </li>
       <li className="">
-        <Link to="/manage-courses">
+        <Link to="/manage-users">
           <span className="icon"><i className="mdi mdi-square-edit-outline"></i></span>
           <span className="menu-item-label">Manage Users</span>
         </Link>

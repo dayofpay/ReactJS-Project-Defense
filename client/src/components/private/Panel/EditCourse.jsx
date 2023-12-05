@@ -16,10 +16,17 @@ export default function EditCourse(){
     const navigate = useNavigate();
     const [courseData,setCourseData] = useState([]);
     const [students,setStudent] = useState([]);
-
+    const [successMessage, setSuccessMessage] = useState("");
     const {editCourseSubmitHandler} = useContext(AuthContext)
     const {values,onChange, onSubmit, errors,setValues } = useForm(
-        editCourseSubmitHandler,
+      async () => {
+        try {
+          await editCourseSubmitHandler(values);
+          setSuccessMessage("Course edited successfully!");
+        } catch (error) {
+          throw new Error(error);
+        }
+      },
         {
             [EditCourseKeys.CourseName]: "",
             [EditCourseKeys.CourseImage]: "",
@@ -179,8 +186,11 @@ return(
                             </div>
                         </div>
                     </div>
-                    <button type="submit">Edit Course</button>
+                    <button type="submit" className="btn btn-primary">Edit Course</button>
                 </form>
+                {successMessage && (
+        <p className={styles["success-message"]}>{successMessage}</p>
+      )}
                 {Object.keys(errors).map((fieldName) => (
         <p key={fieldName} className={styles["error-message"]}>
            {errors[fieldName]}

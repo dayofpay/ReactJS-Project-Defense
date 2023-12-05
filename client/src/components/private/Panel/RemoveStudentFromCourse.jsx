@@ -2,11 +2,19 @@ import useForm from "../../../hooks/useForm";
 import { AddStudentToCourseKeys, RemoveStudentFromCourseKeys } from "../../../keys/form-keys";
 import styles from "../../../../public/css/custom.module.css";
 import AuthContext from "../../../contexts/authContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 export default function RemoveStudent(courseData){
-    const {removeStudentFromCourseHandkler} = useContext(AuthContext)
+    const {removeStudentFromCourseHandkler} = useContext(AuthContext);
+    const [message,setMessage] = useState("");
     const {values,onChange, onSubmit, errors } = useForm(
-        removeStudentFromCourseHandkler,
+      async () => {
+        try {
+          await removeStudentFromCourseHandkler(values);
+          setMessage(`Student ${values["student-name"]} removed from the course successfully!`);
+        } catch (error) {
+          throw new Error(error);
+        }
+      },
         {
             [RemoveStudentFromCourseKeys.StudentName]: "",
             [RemoveStudentFromCourseKeys.CourseId] : courseData.courseId,
@@ -59,6 +67,9 @@ export default function RemoveStudent(courseData){
             </div>
             </form>
       </div>
+      {message && (
+        <p className={styles["success-message"]}>{message}</p>
+      )}
       {Object.keys(errors).map((fieldName) => (
         <p key={fieldName} className={styles["error-message"]}>
            {errors[fieldName]}
