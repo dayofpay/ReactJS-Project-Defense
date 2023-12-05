@@ -8,6 +8,7 @@ import { useState } from "react";
 import { EditCourseKeys } from "../../../keys/form-keys";
 import AddStudentToCourse from "./AddStudentToCourse";
 import RemoveStudent from "./RemoveStudentFromCourse";
+import ShowStudents from "./CourseStudents";
 export default function EditCourse(){
 
 
@@ -190,6 +191,7 @@ return(
         <div className="card mb-6"/>
       <AddStudentToCourse courseId={id}/>
       <RemoveStudent courseId={id}/>
+      <ShowStudents students={students}/>
     </section>
 
 </>

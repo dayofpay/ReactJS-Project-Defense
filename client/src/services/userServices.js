@@ -1,4 +1,5 @@
 import * as request from '../lib/request';
+import convertTimestamp from '../utils/timeConvert';
 
 const endpoint = "http://localhost:3030/data/";
 
@@ -75,4 +76,19 @@ try {
   location.href = "/login";
 }
 return courseList
+}
+
+
+export function getStudentName(studentEmail){
+
+  return studentEmail.split('@')[0];
+}
+
+export async function getUserDetails(studentEmail){
+  const match = studentEmail;
+  const url = `http://localhost:3030/data/user_details?where=email%3D%22${match}%22`;
+  const result = await request.get(url,true);
+
+  return result[0]
+
 }
