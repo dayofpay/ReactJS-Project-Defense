@@ -91,6 +91,9 @@ function ShowCourses({courseList,setCourseList}){
                 <Link to={"/edit-course/" + course._id} className="button small green --jb-modal" type="button" variant="primary">
                   <span className="icon"><i className="mdi mdi-file-document-edit"></i></span>
                 </Link>
+                <Link to={"/edit-files/" + course._id} className="button small blue --jb-modal" type="button" variant="secondary">
+                  <span className="icon"><i className="mdi mdi-school-outline"></i></span>
+                </Link>
               </div>
             </td>
           </tr>)}

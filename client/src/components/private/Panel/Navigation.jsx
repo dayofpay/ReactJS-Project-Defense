@@ -32,34 +32,6 @@ function RenderNavigation({username,email}){
   </div>
   <div className="navbar-menu" id="navbar-menu">
     <div className="navbar-end">
-      <div className="navbar-item dropdown has-divider">
-        <a className="navbar-link">
-          <span className="icon"><i className="mdi mdi-menu"></i></span>
-          <span>Sample Menu</span>
-          <span className="icon">
-            <i className="mdi mdi-chevron-down"></i>
-          </span>
-        </a>
-        <div className="navbar-dropdown">
-          <Link to="/profile" className="navbar-item">
-            <span className="icon"><i className="mdi mdi-account"></i></span>
-            <span>My Profile</span>
-          </Link>
-          <a className="navbar-item">
-            <span className="icon"><i className="mdi mdi-settings"></i></span>
-            <span>Settings</span>
-          </a>
-          <a className="navbar-item">
-            <span className="icon"><i className="mdi mdi-email"></i></span>
-            <span>Messages</span>
-          </a>
-          <hr className="navbar-divider"/>
-          <Link className="navbar-item">
-            <span className="icon"><i className="mdi mdi-logout"></i></span>
-            <span>Log Out</span>
-          </Link>
-        </div>
-      </div>
       <div className="navbar-item dropdown has-divider has-user-avatar">
         <a className="navbar-link">
           <div className="user-avatar">
@@ -72,15 +44,7 @@ function RenderNavigation({username,email}){
         <Link to="/profile" className="navbar-item">
             <span className="icon"><i className="mdi mdi-account"></i></span>
             <span>My Profile</span>
-          </Link>
-          <a className="navbar-item">
-            <span className="icon"><i className="mdi mdi-settings"></i></span>
-            <span>Settings</span>
-          </a>
-          <a className="navbar-item">
-            <span className="icon"><i className="mdi mdi-email"></i></span>
-            <span>Messages</span>
-          </a>
+          </Link> 
           <hr className="navbar-divider"/>
           <Link className="navbar-item" to={"/logout"}>
             <span className="icon"><i className="mdi mdi-logout"></i></span>
