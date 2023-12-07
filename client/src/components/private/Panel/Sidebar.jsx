@@ -30,27 +30,21 @@ export default function Sidebar(){
       <>
 <p className="menu-label">[STAFF]</p>
       <ul className="menu-list">
-      <li>
-        <a href="tables.html">
-          <span className="icon"><i className="mdi mdi-table"></i></span>
-          <span className="menu-item-label">Tables</span>
-        </a>
-      </li>
       <li className="">
         <Link to="/manage-courses">
-          <span className="icon"><i className="mdi mdi-square-edit-outline"></i></span>
+          <span className="icon"><i className="mdi mdi-notebook"></i></span>
           <span className="menu-item-label">Manage Courses</span>
         </Link>
       </li>
       <li className="">
         <Link to="/manage-users">
-          <span className="icon"><i className="mdi mdi-square-edit-outline"></i></span>
+          <span className="icon"><i className="mdi mdi-account-search-outline"></i></span>
           <span className="menu-item-label">Manage Users</span>
         </Link>
       </li>
       <li className="">
         <Link to="/create-course">
-          <span className="icon"><i className="mdi mdi-square-edit-outline"></i></span>
+          <span className="icon"><i className="mdi mdi-plus-box-multiple"></i></span>
           <span className="menu-item-label">Create Course</span>
         </Link>
       </li>
@@ -60,52 +54,21 @@ export default function Sidebar(){
           <span className="menu-item-label">My Profile</span>
         </Link>
       </li>
-      <li>
-        <a href="login.html">
-          <span className="icon"><i className="mdi mdi-lock"></i></span>
-          <span className="menu-item-label">Login</span>
-        </a>
-      </li>
-      <li>
-        <a className="dropdown">
-          <span className="icon"><i className="mdi mdi-view-list"></i></span>
-          <span className="menu-item-label">Submenus</span>
-          <span className="icon"><i className="mdi mdi-plus"></i></span>
-        </a>
-        <ul>
-          <li>
-            <a href="#void">
-              <span>Sub-item One</span>
-            </a>
-          </li>
-          <li>
-            <a href="#void">
-              <span>Sub-item Two</span>
-            </a>
-          </li>
-        </ul>
-      </li>
     </ul>
       </>
     )}
     <p className="menu-label">About</p>
     <ul className="menu-list">
       <li>
-        <a href="https://justboil.me" target="_blank" className="has-icon">
-          <span className="icon"><i className="mdi mdi-credit-card-outline"></i></span>
-          <span className="menu-item-label">Premium Demo</span>
-        </a>
-      </li>
-      <li>
         <a href="https://justboil.me/tailwind-admin-templates" className="has-icon">
           <span className="icon"><i className="mdi mdi-help-circle"></i></span>
-          <span className="menu-item-label">About</span>
+          <span className="menu-item-label">About the project</span>
         </a>
       </li>
       <li>
-        <a href="https://github.com/justboil/admin-one-tailwind" className="has-icon">
+        <a href="https://github.com/dayofpay/ReactJS-Project-Defense" className="has-icon">
           <span className="icon"><i className="mdi mdi-github-circle"></i></span>
-          <span className="menu-item-label">GitHub</span>
+          <span className="menu-item-label">GitHub Repository</span>
         </a>
       </li>
     </ul>
