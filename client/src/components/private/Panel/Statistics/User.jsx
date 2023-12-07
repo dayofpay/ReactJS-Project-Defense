@@ -1,7 +1,16 @@
 
+import { useEffect, useState } from "react";
 import withUserCount from "../../../../HOC/withUserCount";
 import withUserCourseList from "../../../../HOC/withUserCourseList";
+import { getUserDetails } from "../../../../services/userServices";
 function ShowUserStats({courseList,userCount}){
+  const [userBalance,setUserBalance] = useState(0);
+  useEffect(() => {
+    getUserDetails(JSON.parse(localStorage.getItem('auth'))["email"],'email').then((response) => {
+      console.log(localStorage.getItem('user_id'));
+      setUserBalance(Number(response["balance"]));
+    })
+  },[])
     // this will be the statistics that every user will see in their dashboard ...
     return(
         <section className="section main-section">
@@ -26,13 +35,13 @@ function ShowUserStats({courseList,userCount}){
           <div className="flex items-center justify-between">
             <div className="widget-label">
               <h3>
-                Sales
+                Balance
               </h3>
               <h1>
-                $7,770
+                ${userBalance}
               </h1>
             </div>
-            <span className="icon widget-icon text-blue-500"><i className="mdi mdi-cart-outline mdi-48px"></i></span>
+            <span className="icon widget-icon text-blue-500"><i className="mdi mdi-currency-usd mdi-48px"></i></span>
           </div>
         </div>
       </div>
@@ -48,7 +57,7 @@ function ShowUserStats({courseList,userCount}){
                 {userCount}
               </h1>
             </div>
-            <span className="icon widget-icon text-red-500"><i className="mdi mdi-finance mdi-48px"></i></span>
+            <span className="icon widget-icon text-red-500"><i className="mdi mdi-account-check mdi-48px"></i></span>
           </div>
         </div>
       </div>
