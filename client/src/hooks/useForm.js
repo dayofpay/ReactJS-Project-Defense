@@ -3,21 +3,17 @@ import { useState } from "react";
 export default function useForm(submitHandler, initialValues, validatorSettings) {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
-
+  
   const validate = () => {
     if (!validatorSettings) {
-      return true; // if there is no special validation settings ( Like in register form  :D )
+      return true;
     }
 
     let validationErrors = {};
 
     Object.keys(validatorSettings).forEach((fieldName) => {
       const errorMessage = validatorSettings[fieldName](values[fieldName]);
-      if (errorMessage) {
-        validationErrors[fieldName] = errorMessage;
-      } else {
-        validationErrors[fieldName] = '';
-      }
+      validationErrors[fieldName] = errorMessage || '';
     });
 
     setErrors(validationErrors);
@@ -26,12 +22,13 @@ export default function useForm(submitHandler, initialValues, validatorSettings)
 
   const onChange = (event) => {
     const fieldName = event.target.name;
-    const fieldValue = event.target.value;
+    const fieldValue = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    
     setValues((state) => ({
       ...state,
       [fieldName]: fieldValue,
     }));
-
+  
     setErrors((prevErrors) => ({
       ...prevErrors,
       [fieldName]: undefined,

@@ -40,12 +40,9 @@ export default function ShowUsers(){
             <td data-label="UserId">{user._id}</td>
             <td className="actions-cell">
               <div className="buttons right nowrap">
-                <Link to={"/user-details/" + user._id} className="button small green --jb-modal" type="button">
-                  <span className="icon"><i className="mdi mdi-eye"></i></span>
+                <Link to={"/edit-user/" + user._id} className="button small green --jb-modal" type="button">
+                  <span className="icon"><i className="mdi mdi-file-document-edit"></i></span>
                 </Link>
-                <button className="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span className="icon"><i className="mdi mdi-trash-can"></i></span>
-                </button>
               </div>
             </td>
           </tr>)}

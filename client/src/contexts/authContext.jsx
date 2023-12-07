@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import usePersistedState from "../hooks/usePersistedState";
 import PATH_LIST from "../utils/PathList";
-import { createUserSettings } from "../services/userServices";
+import { createUserSettings, editUser } from "../services/userServices";
 import { addStudent, createCourse, editCourse, removeStudent } from "../services/courseServices";
 import { EditCourseKeys,CreateCourseKeys } from "../keys/form-keys";
 export const AuthContext = createContext();
@@ -113,6 +113,19 @@ export const AuthProvider = ({
         throw new Error(error);
       }
     }
+
+    const editUserHandler = async(values) => {
+      const editObject = {
+        balance : Number(values["user-balance"]),
+        isStaff: values["user-is-staff"] === "true", // Convert string to boolean
+      }
+      try{
+        console.log(values);
+        await editUser(values["user-id"],editObject);
+      }catch(error){
+        throw new Error('Unable to edit user',error);
+      }
+    }
     const logoutHandler = () => {
       setAuth({});
       localStorage.clear();
@@ -134,7 +147,8 @@ export const AuthProvider = ({
       editCourseSubmitHandler,
       logoutHandler,
       addCourseStudentHandler,
-      removeStudentFromCourseHandkler
+      removeStudentFromCourseHandkler,
+      editUserHandler
   } 
      return (
         <AuthContext.Provider value={logValues}>

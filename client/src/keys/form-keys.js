@@ -29,4 +29,11 @@ const RemoveStudentFromCourseKeys = {
     StudentName : 'student-name',
     CourseId : 'course-id',
 }
-export {EditCourseKeys,CreateCourseKeys,AddStudentToCourseKeys,RemoveStudentFromCourseKeys}
+
+const EditUserKeys = {
+    UserEmail : 'user-email',
+    UserBalance : 'user-balance',
+    IsStaff : 'user-is-staff',
+    UserId : 'user-id',
+}
+export {EditCourseKeys,CreateCourseKeys,AddStudentToCourseKeys,RemoveStudentFromCourseKeys,EditUserKeys}

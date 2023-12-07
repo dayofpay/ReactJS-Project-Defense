@@ -84,9 +84,9 @@ export function getStudentName(studentEmail){
   return studentEmail.split('@')[0];
 }
 
-export async function getUserDetails(studentEmail){
-  const match = studentEmail;
-  const url = `http://localhost:3030/data/user_details?where=email%3D%22${match}%22`;
+export async function getUserDetails(data,identifier){
+  const match = data;
+  const url = `http://localhost:3030/data/user_details?where=${identifier}%3D%22${match}%22`;
   const result = await request.get(url,true);
 
   return result[0]
@@ -98,6 +98,14 @@ export async function getUserList(){
   const url = "http://localhost:3030/data/user_details";
 
   const result = await request.get(url,true);
+
+  return result;
+}
+
+export async function editUser(id,data){
+  const url = "http://localhost:3030/data/user_details/";
+
+  const result = await request.patch(url + id,data,true);
 
   return result;
 }

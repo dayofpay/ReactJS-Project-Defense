@@ -5,13 +5,12 @@ import convertTimestamp from '../../../utils/timeConvert';
 
 export default function ShowStudents({ students }) {
   const [studentDetails, setStudentDetails] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       if (students.course_students) {
         const details = await Promise.all(
           students.course_students.map(async (student) => {
-            const response = await getUserDetails(student);
+            const response = await getUserDetails(student,'email');
             return response;
           })
         );
