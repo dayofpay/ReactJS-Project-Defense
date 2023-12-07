@@ -126,7 +126,7 @@ export default function EditUser(){
     </div>
   </div>
 </div>
-<button type="submit" className="btn btn-primary" onClick={() => {setMessage('Test')}}>Edit User</button>
+<button type="submit" className="btn btn-primary" onClick={() => {setMessage(true)}}>Edit User</button>
         </form>
         {message && (      <div className={styles["success-edit-msg"]}>
         User support@v-devs.eu edited successfully!
