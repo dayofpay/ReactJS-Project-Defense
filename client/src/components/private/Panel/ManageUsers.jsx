@@ -8,7 +8,7 @@ export default function ShowUsers(){
         getUserList().then((response) => {
             setUser(response);
         })
-    })
+    },[])
     return(
 <div className="card has-table">
       <header className="card-header">

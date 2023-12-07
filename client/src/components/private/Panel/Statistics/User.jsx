@@ -26,7 +26,7 @@ function ShowUserStats({courseList,userCount}){
                 {courseList.length}
               </h1>
             </div>
-            <span className="icon widget-icon text-green-500"><i className="mdi mdi-book mdi-48px"></i></span>
+            <span className="icon widget-icon text-green-500"><i className="mdi mdi-school-outline mdi-48px"></i></span>
           </div>
         </div>
       </div>
