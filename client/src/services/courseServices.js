@@ -14,9 +14,13 @@ export async function createCourse(courseData){
 }
 
 export async function getCourseData(courseId){
-    const result = await request.get('http://localhost:3030/data/courses/' + courseId,true);
+    try{
+        const result = await request.get('http://localhost:3030/data/courses/' + courseId,true);
+        return result;
+    }catch(error){
+        return {error:"Error while trying to fetch course info !"};
+    }
 
-    return result;
 }
 
 export async function editCourse(courseId,updateData){

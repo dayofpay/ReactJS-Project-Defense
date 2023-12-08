@@ -27,7 +27,11 @@ export default function DisplayInfo() {
             setInCourse(response["course_students"].includes(email));
         });
 
-    }, [])
+    }, []);
+
+    if(courseInfo.hasOwnProperty('error')){
+        navigate('/')
+    }
     const handleJoinCourse = async(event) => {
         const result = await joinCourse(id,email);
         if(result.hasOwnProperty('error')){
