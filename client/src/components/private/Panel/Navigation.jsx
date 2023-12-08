@@ -60,6 +60,10 @@ function RenderNavigation({username,email}){
         <span className="icon"><i className="mdi mdi-github-circle"></i></span>
         <span>GitHub</span>
       </a>
+      <Link to={"/"} className="navbar-item has-divider desktop-icon-only">
+        <span className="icon"><i className="mdi mdi-home"></i></span>
+        <span>Home</span>
+      </Link>
       <Link to="/logout" title="Log out" className="navbar-item desktop-icon-only">
         <span className="icon"><i className="mdi mdi-logout"></i></span>
         <span>Log out</span>

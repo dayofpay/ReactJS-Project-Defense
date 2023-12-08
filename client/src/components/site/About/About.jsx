@@ -1,4 +1,31 @@
+import { useEffect, useState } from "react"
+import { getSiteMembersCount } from "../../../services/siteServices";
+import { getTotalCourseFiles, getTotalCourses, getTotalFeedBacks } from "../../../services/courseServices";
+
 export default function About(){
+
+    const [users,setUsers] = useState(0);
+    const [totalCourses,setCourses] = useState(0);
+    const [totalCourseFiles,setCourseFiles] = useState(0);
+    const [feedbacks,setFeedbacks] = useState(0);
+    useEffect(() => {
+        getSiteMembersCount().then((response) => {
+            setUsers(Number(response));
+        });
+
+
+        getTotalCourses().then((response) => {
+            setCourses(Number(response));
+        });
+
+        getTotalCourseFiles().then((response) => {
+            setCourseFiles(Number(response));
+        });
+
+        getTotalFeedBacks().then((response) => {
+            setFeedbacks(Number(response));
+        })
+    })
     return (
 
     <div className="container-fluid py-5">
@@ -19,26 +46,26 @@ export default function About(){
                     <div className="row pt-3 mx-0">
                         <div className="col-3 px-0">
                             <div className="bg-success text-center p-4">
-                                <h1 className="text-white" data-toggle="counter-up">123</h1>
-                                <h6 className="text-uppercase text-white">Available<span className="d-block">Subjects</span></h6>
+                                <h1 className="text-white" data-toggle="counter-up">{users}</h1>
+                                <h6 className="text-uppercase text-white">Registered <span className="d-block">Users</span></h6>
                             </div>
                         </div>
                         <div className="col-3 px-0">
                             <div className="bg-primary text-center p-4">
-                                <h1 className="text-white" data-toggle="counter-up">1234</h1>
-                                <h6 className="text-uppercase text-white">Online<span className="d-block">Courses</span></h6>
+                                <h1 className="text-white" data-toggle="counter-up">{totalCourses}</h1>
+                                <h6 className="text-uppercase text-white">Total<span className="d-block">Courses</span></h6>
                             </div>
                         </div>
                         <div className="col-3 px-0">
                             <div className="bg-secondary text-center p-4">
-                                <h1 className="text-white" data-toggle="counter-up">123</h1>
-                                <h6 className="text-uppercase text-white">Skilled<span className="d-block">Instructors</span></h6>
+                                <h1 className="text-white" data-toggle="counter-up">{totalCourseFiles}</h1>
+                                <h6 className="text-uppercase text-white">Total <span className="d-block">Course files</span></h6>
                             </div>
                         </div>
                         <div className="col-3 px-0">
                             <div className="bg-warning text-center p-4">
-                                <h1 className="text-white" data-toggle="counter-up">1234</h1>
-                                <h6 className="text-uppercase text-white">Happy<span className="d-block">Students</span></h6>
+                                <h1 className="text-white" data-toggle="counter-up">{feedbacks}</h1>
+                                <h6 className="text-uppercase text-white">Total<span className="d-block">Feedbacks</span></h6>
                             </div>
                         </div>
                     </div>

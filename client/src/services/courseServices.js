@@ -222,3 +222,22 @@ export async function getComments(courseId){
 
     return result;
 }
+
+
+export async function getTotalCourses(){
+    const result = await request.get('http://localhost:3030/data/courses?count',true);
+
+    return result;
+}
+
+export async function getTotalCourseFiles(){
+    const result = await request.get('http://localhost:3030/data/course_files?count',true);
+
+    return result;
+}
+
+export async function getTotalFeedBacks(){
+    const result = await request.get('http://localhost:3030/data/course_comments?count',true);
+
+    return result;
+}
