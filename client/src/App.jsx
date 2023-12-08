@@ -14,6 +14,7 @@ import ShowEditCourse from './Pages/Panel/EditCourse';
 import ManageUsers from './Pages/Panel/ManageUsers';
 import ShowEditUser from './Pages/Panel/EditUser';
 import ShowEditFiles from './Pages/Panel/EditCourseFiles';
+import StaffProtected from './contexts/staffContext';
 const Logout = lazy(() => import('./components/private/Auth/Logout'));
 const Register = lazy(() => import('./components/private/Auth/Register'));
 const ShowDashboard = lazy(() => import('./Pages/Panel/Dashboard'));
@@ -34,19 +35,23 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path='/dashboard' element={<ShowDashboard/>}/>
           <Route path='/profile' element={<Profile/>}/>
-          <Route path='/manage-courses' element={<ShowCourses/>}/>
-          <Route path='/create-course' element={<ShowCreateCourse/>}/>
-          <Route path='/edit-course/:id' element={<ShowEditCourse/>}/>
-          <Route path='/manage-users' element={<ManageUsers/>}/>
-          <Route path='/edit-user/:id' element={<ShowEditUser/>}/>
-          <Route path='/edit-files/:id' element={<ShowEditFiles/>}/>
+        </Route>
+        <Route element={<StaffProtected/>}>
+        <Route path='/manage-courses' element={<ShowCourses/>} />
+          <Route path='/create-course' element={<ShowCreateCourse/>} />
+          <Route path='/edit-course/:id' element={<ShowEditCourse/>} />
+          <Route path='/manage-users' element={< ManageUsers/>} />
+          <Route path='/edit-user/:id' element={<ShowEditUser/>} />
+          <Route path='/edit-files/:id' element={<ShowEditFiles/>} />
         </Route>
       </Routes>
       </Suspense>
       </AuthProvider>
   </ErrorBoundary>
 
-    </>// TODO ADMIN GUARDS FOR MANAGING COURSES ETC...
+    </>
+    // ProtectedRoute - Requires User account
+    // StaffProtected - Requires Staff account
 
   );
 

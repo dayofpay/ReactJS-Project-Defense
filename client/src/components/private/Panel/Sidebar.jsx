@@ -2,8 +2,9 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { isUserStaff } from "../../../services/userServices";
 import { Link } from "react-router-dom";
+import usePersistedState from "../../../hooks/usePersistedState";
 export default function Sidebar(){
-  const [isStaff,setStaffState] = useState(false);
+  const [isStaff,setStaffState] = usePersistedState('isStaff',false);
   useEffect(() => {
    isUserStaff().then((response) => {
     setStaffState(response);

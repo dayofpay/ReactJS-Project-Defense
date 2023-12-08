@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import usePersistedState from "../hooks/usePersistedState";
 import PATH_LIST from "../utils/PathList";
-import { createUserSettings, editUser } from "../services/userServices";
+import { createUserSettings, editUser, isUserStaff } from "../services/userServices";
 import { addStudent, attachCourseFile, createCourse, editCourse, removeStudent } from "../services/courseServices";
 import { EditCourseKeys,CreateCourseKeys, CourseFileKeys } from "../keys/form-keys";
 export const AuthContext = createContext();
@@ -16,7 +16,6 @@ export const AuthProvider = ({
 }) => {
     const navigate = useNavigate();
     const [auth,setAuth] = usePersistedState('auth',{});
-
     const loginSubmitHandler = async (values) => {
       const result = await authService.login(values.email,values.password);
   
@@ -152,7 +151,15 @@ export const AuthProvider = ({
     
       navigate(PATH_LIST.home);
     }
-  
+    const isAdmin = async() => {
+      try{
+        const result = await isUserStaff().then((response) => {
+          return response;
+        });
+      }catch(error){
+        throw new Error(error);
+      }
+    }
 
     const logValues = {
       loginSubmitHandler,
@@ -170,6 +177,7 @@ export const AuthProvider = ({
       removeStudentFromCourseHandkler,
       editUserHandler,
       attachFileContext,
+      isAdmin
   } 
      return (
         <AuthContext.Provider value={logValues}>
