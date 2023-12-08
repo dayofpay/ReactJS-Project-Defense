@@ -18,6 +18,7 @@ import StaffProtected from './contexts/staffContext';
 import DisplayCatalog from './Pages/Site/Courses';
 import ShowCourseInfo from './Pages/Site/CourseInfo';
 import LoadingAnimation from './components/global/Loading';
+import NotFoundPage from './components/global/NotFound';
 const Logout = lazy(() => import('./components/private/Auth/Logout'));
 const Register = lazy(() => import('./components/private/Auth/Register'));
 const ShowDashboard = lazy(() => import('./Pages/Panel/Dashboard'));
@@ -49,6 +50,7 @@ function App() {
           <Route path='/edit-user/:id' element={<ShowEditUser/>} />
           <Route path='/edit-files/:id' element={<ShowEditFiles/>} />
         </Route>
+        <Route path='*' element={<NotFoundPage/>}/>
       </Routes>
       </Suspense>
       </AuthProvider>

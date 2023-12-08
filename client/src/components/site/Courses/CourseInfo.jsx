@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getCourseData, getCourseFiles, getCourseStudents, joinCourse } from "../../../services/courseServices";
 import AuthContext from "../../../contexts/authContext";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ export default function DisplayInfo() {
     const { isAuthenticated, email } = useContext(AuthContext);
     const [message, setMessage] = useState('');
     const [error, setError] = useState(false);
-
+    const navigate = useNavigate();
     useEffect(() => {
         getCourseData(id).then((response) => {
             setCourseInfo(response);
@@ -28,7 +28,6 @@ export default function DisplayInfo() {
         });
 
     }, [])
-
     const handleJoinCourse = async(event) => {
         const result = await joinCourse(id,email);
         if(result.hasOwnProperty('error')){

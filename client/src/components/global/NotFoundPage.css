@@ -1,0 +1,17 @@
+
+.not-found-container {
+    text-align: center;
+    margin: 100px auto;
+    max-width: 600px;
+    h1 {
+        font-size: 3em;
+        color: #f00;
+      }
+      
+      p {
+        font-size: 1.5em;
+        color: #555;
+      }
+  }
+  
+  
