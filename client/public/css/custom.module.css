@@ -3,10 +3,10 @@
   font-size: 14px;
   margin-top: 5px;
   padding: 8px;
-  border: 1px solid #ff9999;
+
   border-radius: 4px;
   background-color: #ffe6e6;
-  display: inline-block;
+
   max-width: 300px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: opacity 0.3s ease-in-out;

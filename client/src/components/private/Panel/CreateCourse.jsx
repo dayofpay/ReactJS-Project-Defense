@@ -137,11 +137,17 @@ return(
                     </div>
                     <button type="submit" className="btn btn-primary">Create Course</button>
                 </form>
-                {Object.keys(errors).map((fieldName) => (
-        <p key={fieldName} className={styles["error-message"]}>
-           {errors[fieldName]}
-        </p>
-      ))}
+                {Object.keys(errors)
+  .filter((fieldName) => errors[fieldName])
+  .map((fieldName) => (
+    <p key={fieldName} className={styles["error-message"]}>
+      {errors[fieldName]}
+    </p>
+))}
+
+
+
+
             </div>
         </div>
 

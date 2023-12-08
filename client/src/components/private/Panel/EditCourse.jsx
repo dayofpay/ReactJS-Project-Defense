@@ -191,11 +191,13 @@ return(
                 {successMessage && (
         <p className={styles["success-message"]}>{successMessage}</p>
       )}
-                {Object.keys(errors).map((fieldName) => (
-        <p key={fieldName} className={styles["error-message"]}>
-           {errors[fieldName]}
-        </p>
-      ))}
+                {Object.keys(errors)
+  .filter((fieldName) => errors[fieldName])
+  .map((fieldName) => (
+    <p key={fieldName} className={styles["error-message"]}>
+      {errors[fieldName]}
+    </p>
+))}
             </div>
         </div>
         <div className="card mb-6"/>
