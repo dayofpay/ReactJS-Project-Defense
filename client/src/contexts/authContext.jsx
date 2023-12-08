@@ -117,9 +117,11 @@ export const AuthProvider = ({
     const editUserHandler = async(values) => {
       const editObject = {
         balance : Number(values["user-balance"]),
-        isStaff: values["user-is-staff"] === 'true' ? true : false,
+        isStaff: values["user-is-staff"] === 'false' ? false : true,
       }
-      console.log(editObject);
+      console.log(values["user-is-staff"]);
+      // console.log(values,'Values');
+      // console.log(editObject,'Edit Object');
       try{
         console.log(values);
         await editUser(values["user-id"],editObject);
