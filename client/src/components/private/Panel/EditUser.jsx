@@ -125,6 +125,7 @@ export default function EditUser(){
   name={EditUserKeys.IsStaff}
   onChange={onChange}
   value={String(values[EditUserKeys.IsStaff])}
+  
 >
   <option value="true">Yes</option>
   <option value="false">No</option>
