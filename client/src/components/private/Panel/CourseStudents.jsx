@@ -3,6 +3,7 @@ import { getStudentName, getUserDetails } from '../../../services/userServices';
 import convertTimestamp from '../../../utils/timeConvert';
 import useRefresh from '../../../hooks/useRefresh';
 import LoadingAnimation from '../../global/Loading';
+import { Link } from 'react-router-dom';
 
 export default function ShowStudents({ students }) {
   const [studentDetails, setStudentDetails] = useState([]);
@@ -66,12 +67,9 @@ export default function ShowStudents({ students }) {
             <td data-label="isStaff">{studentDetails?.[value]?.["isStaff"] === true ? 'Yes' : 'No'}</td>
             <td className="actions-cell">
               <div className="buttons right nowrap">
-                <button className="button small green --jb-modal" data-target="sample-modal-2" type="button">
+                <Link className="button small green --jb-modal" to={'/edit-user/' + studentDetails?.[value]?.["_id"]} data-target="sample-modal-2" type="button">
                   <span className="icon"><i className="mdi mdi-eye"></i></span>
-                </button>
-                <button className="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span className="icon"><i className="mdi mdi-trash-can"></i></span>
-                </button>
+                </Link>
               </div>
             </td>
           </tr>)}

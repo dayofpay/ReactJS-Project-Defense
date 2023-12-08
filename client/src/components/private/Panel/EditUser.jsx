@@ -83,12 +83,6 @@ export default function EditUser(){
     return (
 <>
 <section className="is-hero-bar">
-  <div className="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-    <h1 className="title">
-      Forms
-    </h1>
-
-  </div>
 </section>
 <div className="card">
     <header className="card-header">
