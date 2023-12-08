@@ -1,4 +1,5 @@
 import * as request from '../lib/request';
+import { useNavigate } from 'react-router-dom';
 
 export async function deleteCourse(id){
 
@@ -105,7 +106,13 @@ export async function getCourseList(){
 
     return result;
 }
+export async function courseExists(courseId){
+    const url = "http://localhost:3030/data/courses/" + courseId;
 
+    const exists = await request.get(url,true);
+    return exists;
+
+}
 export async function attachCourseFile(data){
     const url = "http://localhost:3030/data/course_files/";
 
@@ -114,15 +121,28 @@ export async function attachCourseFile(data){
     return result;
 }
 
-export async function getCourseFiles(courseId){
-    const url = "http://localhost:3030/data/course_files" + `?where=course_id%3D%22${courseId}%22`;
-    const result = await request.get(url,true);
+export async function getCourseFiles(courseId) {
+  const url = `http://localhost:3030/data/course_files?where=course_id%3D%22${courseId}%22`;
+
+  try {
+
+    const isExist = await courseExists(courseId);
+
+
+    if (!isExist) {
+      return { error: "This course does not exist!" };
+    }
+
+    const result = await request.get(url, true);
     return result;
+  } catch (error) {
+    console.error("Error checking course existence:", error);
+    return { error: "An error occurred while checking course." };
+  }
 }
 
 export async function deleteCourseFile(fileId){
     const url = "http://localhost:3030/data/course_files/" + fileId;
-
     const result = await request.remove(url,true);
 
     return result;

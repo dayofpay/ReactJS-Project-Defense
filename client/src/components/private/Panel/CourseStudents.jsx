@@ -59,11 +59,11 @@ export default function ShowStudents({ students }) {
             </td>
 
             <td data-label="Name">{getStudentName(student)}</td>
-            <td data-label="Company">{student}</td>
+            <td data-label="Student">{student}</td>
 
             <td data-label="isStaff">{studentDetails?.[value]?.["balance"] === undefined ? 'Unknown' : studentDetails?.[value]?.["balance"]} $</td>
             <td data-label="Created">
-              <small className="text-gray-500" title="Oct 25, 2021">{convertTimestamp(studentDetails?.[value]?.["_createdOn"])}</small>
+              <small className="text-gray-500" title={convertTimestamp(studentDetails?.[value]?.["_createdOn"])}>{convertTimestamp(studentDetails?.[value]?.["_createdOn"])}</small>
             </td>
             <td data-label="isStaff">{studentDetails?.[value]?.["isStaff"] === true ? 'Yes' : 'No'}</td>
             <td className="actions-cell">

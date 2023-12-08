@@ -60,6 +60,9 @@ export default function EditFiles(){
 
       useEffect(() => {
         getCourseFiles(id).then((response) => {
+          if(response.hasOwnProperty('error')){
+            navigate('/');
+          }
           setFiles(response);
         })
       },[refresh])

@@ -61,19 +61,25 @@ export default function EditUser(){
         }
       );
 
-    useEffect(() => {
-        try{
-            console.log(userData);
-            setValues({
-                [EditUserKeys.UserEmail] : userData?.["email"] || "Loading...",
-                [EditUserKeys.UserBalance] : Number(userData?.["balance"]) || "",
-                [EditUserKeys.IsStaff]: !!userData?.["isStaff"],
-                [EditUserKeys.UserId] : userData?.["_id"] || "",
-            })
-        }catch(error){
-            navigate('/')
+      useEffect(() => {
+        try {
+          console.log(userData);
+          setValues((prevValues) => ({
+            ...prevValues,
+            [EditUserKeys.UserEmail]: userData?.["email"] || "Loading...",
+            [EditUserKeys.UserBalance]: Number(userData?.["balance"]) || "",
+            [EditUserKeys.IsStaff]: userData?.["isStaff"] || false,
+            [EditUserKeys.UserId]: userData?.["_id"] || "",
+          }));
+        } catch (error) {
+          navigate('/');
         }
-    },[userData,id])
+      }, [userData, id]);
+      
+      
+    if(!userData){
+      navigate('/');
+    }
     return (
 <>
 <section className="is-hero-bar">
@@ -115,14 +121,16 @@ export default function EditUser(){
   <label className="label">Is Staff</label>
   <div className="control">
     <div className="select">
-      <select
-        name={EditUserKeys.IsStaff}
-        onChange={onChange}
-        value={values[EditUserKeys.IsStaff]}
-      >
-        <option value={true}>Yes</option>
-        <option value={false}>No</option>
-      </select>
+    <select
+  name={EditUserKeys.IsStaff}
+  onChange={onChange}
+  value={String(values[EditUserKeys.IsStaff])}
+>
+  <option value="true">Yes</option>
+  <option value="false">No</option>
+</select>
+
+
     </div>
   </div>
 </div>
