@@ -13,7 +13,7 @@ export default function ShowComments() {
         const fetchData = async () => {
             try {
                 const response = await getComments(id);
-                setComments(response); // Assuming response is an array
+                setComments(response);
             } catch (error) {
                 console.error('Error fetching comments:', error);
             }
