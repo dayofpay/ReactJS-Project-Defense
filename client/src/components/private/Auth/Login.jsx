@@ -52,11 +52,13 @@ export default function Login(){
               Please enter your password
             </p>
           </div>
-          {errors && Object.keys(errors).map((fieldName) => (
-        <p key={fieldName} className={styles["error-message"]}>
-          {errors[fieldName]}
-        </p>
-      ))}
+          {Object.keys(errors)
+  .filter((fieldName) => errors[fieldName])
+  .map((fieldName) => (
+    <p key={fieldName} className={styles["error-message"]}>
+      {errors[fieldName]}
+    </p>
+))}
 
           <hr/>
 

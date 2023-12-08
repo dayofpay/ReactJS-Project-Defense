@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import withCarousel from "../../../HOC/withCarousel"
+import { getCourseList } from "../../../services/courseServices";
 
+import styles from '../../../../public/css/custom.module.css'
 
 function CourseList() {
+    const [courseList, setCourseList] = useState([]);
+
+    useEffect(() => {
+        getCourseList().then((response) => {
+            setCourseList(response);
+        })
+    },[]);
 
     return (
 
@@ -14,7 +24,7 @@ function CourseList() {
                 </div>
             </div>
         </div>
-        <div className="owl-carousel courses-carousel">
+        {courseList.map((course,index) => <div className="owl-carousel courses-carousel" key={index}>
             <div className="courses-item position-relative">
                 <img className="img-fluid" src="img/courses-1.jpg" alt=""/>
                 <div className="courses-text">
@@ -30,82 +40,7 @@ function CourseList() {
                     </div>
                 </div>
             </div>
-            <div className="courses-item position-relative">
-                <img className="img-fluid" src="img/courses-2.jpg" alt=""/>
-                <div className="courses-text">
-                    <h4 className="text-center text-white px-3">Web design & development courses for beginners</h4>
-                    <div className="border-top w-100 mt-3">
-                        <div className="d-flex justify-content-between p-4">
-                            <span className="text-white"><i className="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span className="text-white"><i className="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div className="w-100 bg-white text-center p-4" >
-                        <a className="btn btn-primary" href="detail.html">Course Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div className="courses-item position-relative">
-                <img className="img-fluid" src="img/courses-3.jpg" alt=""/>
-                <div className="courses-text">
-                    <h4 className="text-center text-white px-3">Web design & development courses for beginners</h4>
-                    <div className="border-top w-100 mt-3">
-                        <div className="d-flex justify-content-between p-4">
-                            <span className="text-white"><i className="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span className="text-white"><i className="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div className="w-100 bg-white text-center p-4" >
-                        <a className="btn btn-primary" href="detail.html">Course Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div className="courses-item position-relative">
-                <img className="img-fluid" src="img/courses-4.jpg" alt=""/>
-                <div className="courses-text">
-                    <h4 className="text-center text-white px-3">Web design & development courses for beginners</h4>
-                    <div className="border-top w-100 mt-3">
-                        <div className="d-flex justify-content-between p-4">
-                            <span className="text-white"><i className="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span className="text-white"><i className="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div className="w-100 bg-white text-center p-4" >
-                        <a className="btn btn-primary" href="detail.html">Course Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div className="courses-item position-relative">
-                <img className="img-fluid" src="img/courses-5.jpg" alt=""/>
-                <div className="courses-text">
-                    <h4 className="text-center text-white px-3">Web design & development courses for beginners</h4>
-                    <div className="border-top w-100 mt-3">
-                        <div className="d-flex justify-content-between p-4">
-                            <span className="text-white"><i className="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span className="text-white"><i className="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div className="w-100 bg-white text-center p-4" >
-                        <a className="btn btn-primary" href="detail.html">Course Detail</a>
-                    </div>
-                </div>
-            </div>
-            <div className="courses-item position-relative">
-                <img className="img-fluid" src="img/courses-6.jpg" alt=""/>
-                <div className="courses-text">
-                    <h4 className="text-center text-white px-3">Web design & development courses for beginners</h4>
-                    <div className="border-top w-100 mt-3">
-                        <div className="d-flex justify-content-between p-4">
-                            <span className="text-white"><i className="fa fa-user mr-2"></i>Jhon Doe</span>
-                            <span className="text-white"><i className="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                        </div>
-                    </div>
-                    <div className="w-100 bg-white text-center p-4" >
-                        <a className="btn btn-primary" href="detail.html">Course Detail</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>)}
 
     </div>
 

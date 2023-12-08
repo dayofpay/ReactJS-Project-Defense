@@ -7,7 +7,7 @@ export default function Sidebar(){
   const [isStaff,setStaffState] = usePersistedState('isStaff',false);
   useEffect(() => {
    isUserStaff().then((response) => {
-    setStaffState(response === 'true' ? true : false);
+    setStaffState(response === 'true' || response === true ? true : false);
    })
   },[])
     return (

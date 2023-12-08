@@ -1,5 +1,4 @@
 import * as request from '../lib/request';
-import { useNavigate } from 'react-router-dom';
 
 export async function deleteCourse(id){
 
@@ -41,7 +40,9 @@ export async function addStudent(studentEmail, courseId) {
         let isInCourse = (currentStudents.course_students).includes(studentEmail);
 
         if(isInCourse){
-            throw new Error('The described user is already in course ' + courseId);
+            console.error('The user is already in course ' + courseId)
+        return {error:'The user is already in this course'}
+
         }
         // Step 3: Add the studentEmail to the existing students
         const updatedStudents = [...currentStudents.course_students, studentEmail];
@@ -49,9 +50,10 @@ export async function addStudent(studentEmail, courseId) {
         // Step 4: Update the course_students array
         const addStudentResult = await request.patch(url, { course_students: updatedStudents }, true);
 
-        return addStudentResult;
+        return {message: 'You have successfully joined into this course'};
     } catch (error) {
         console.error("Error:", error.message);
+        return {error:'The user is already in this course'}
     }
 }
 export async function removeStudent(studentEmail, courseId) {
@@ -146,4 +148,56 @@ export async function deleteCourseFile(fileId){
     const result = await request.remove(url,true);
 
     return result;
+}
+export async function updateBalance(userId,newBalance){
+    const url = "http://localhost:3030/data/user_details/" + userId;
+
+    const result = await request.patch(url,{balance: newBalance},true);
+
+    return result;
+}
+export async function joinCourse(courseId,userEmail){
+
+    const userData_URL = `http://localhost:3030/data/user_details?where=email%3D%22${userEmail}%22`;
+    const courseInfo_URL = `http://localhost:3030/data/courses/${courseId}`;
+    // Get User Data
+
+    const userData = await request.get(userData_URL,true);
+
+    if(!userData){
+        throw new Error('The user does not exists !');
+    }
+
+    // Check if user has enough balance to enroll into the course
+
+    const userBalance = Number(userData[0]?.["balance"]);
+
+    // Get Course Info
+
+    const courseInfo = await request.get(courseInfo_URL,true);
+
+    const course_price = Number(courseInfo["course_price"]);
+
+    // if the course is free enroll the user into the course
+
+    if(course_price === 0){
+        const joinCourse = await addStudent(userEmail,courseId);
+
+        return joinCourse;
+    }
+
+    if(userBalance - course_price >= 0){
+        // get user id
+
+        const req = await request.get(`http://localhost:3030/data/user_details?where=email%3D%22${userEmail}%22`);
+        const userId = req[0]["_id"];
+
+        updateBalance(userId,userBalance-course_price);
+        const result = addStudent(userEmail,courseId);
+
+        return result;
+    }
+
+    return {error: 'You dont have enough balance'};
+
 }

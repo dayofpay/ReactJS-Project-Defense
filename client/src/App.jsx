@@ -15,6 +15,9 @@ import ManageUsers from './Pages/Panel/ManageUsers';
 import ShowEditUser from './Pages/Panel/EditUser';
 import ShowEditFiles from './Pages/Panel/EditCourseFiles';
 import StaffProtected from './contexts/staffContext';
+import DisplayCatalog from './Pages/Site/Courses';
+import ShowCourseInfo from './Pages/Site/CourseInfo';
+import LoadingAnimation from './components/global/Loading';
 const Logout = lazy(() => import('./components/private/Auth/Logout'));
 const Register = lazy(() => import('./components/private/Auth/Register'));
 const ShowDashboard = lazy(() => import('./Pages/Panel/Dashboard'));
@@ -25,13 +28,15 @@ function App() {
     <>
   <ErrorBoundary>
   <AuthProvider>
-<Suspense fallback={<div>Loading</div>}>
+<Suspense fallback={<LoadingAnimation/>}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<PublicLogin />} />
         <Route path='/logout' element={<Logout />}/>
         <Route path='/register' element={<Register />}/>
+        <Route path='/courses' element={<DisplayCatalog/>}/>
+        <Route path='/course-info/:id' element={<ShowCourseInfo/>}/>
         <Route element={<ProtectedRoute />}>
           <Route path='/dashboard' element={<ShowDashboard/>}/>
           <Route path='/profile' element={<Profile/>}/>

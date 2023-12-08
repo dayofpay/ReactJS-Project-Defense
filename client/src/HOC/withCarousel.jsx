@@ -12,7 +12,7 @@ export default function withCarousel(Component, selector) {
               $(selector).owlCarousel({
                 autoplay: true,
                 smartSpeed: 1500,
-                loop: true,
+                loop: false,
                 dots: false,
                 nav: false,
                 responsive: {
@@ -29,7 +29,7 @@ export default function withCarousel(Component, selector) {
                 smartSpeed: 1500,
                 items: 1,
                 dots: false,
-                loop: true,
+                loop: false,
                 nav: true,
                 navText: [
                   '<i class="fa fa-angle-left" aria-hidden="true"></i>',
@@ -41,7 +41,7 @@ export default function withCarousel(Component, selector) {
               $(selector).owlCarousel({
                 autoplay: true,
                 smartSpeed: 1500,
-                loop: true,
+                loop: false,
                 dots: false,
                 nav: false,
                 responsive: {

@@ -1,0 +1,34 @@
+.course-files-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .files-dropdown {
+    margin-bottom: 20px;
+  }
+  
+  .files-dropdown label {
+    margin-right: 10px;
+  }
+  
+  .file-details {
+    margin-top: 20px;
+  }
+  
+  .files-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .files-table th, .files-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .files-table th {
+    background-color: #f2f2f2;
+  }
+  
