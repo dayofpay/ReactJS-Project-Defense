@@ -61,7 +61,7 @@ export default function Sidebar(){
     <p className="menu-label">About</p>
     <ul className="menu-list">
       <li>
-        <a href="https://justboil.me/tailwind-admin-templates" className="has-icon">
+        <a href="https://github.com/dayofpay/ReactJS-Project-Defense/blob/main/README.md" className="has-icon">
           <span className="icon"><i className="mdi mdi-help-circle"></i></span>
           <span className="menu-item-label">About the project</span>
         </a>
