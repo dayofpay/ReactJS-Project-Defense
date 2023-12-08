@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { getStudentName, getUserDetails } from '../../../services/userServices';
 import convertTimestamp from '../../../utils/timeConvert';
 import useRefresh from '../../../hooks/useRefresh';
+import LoadingAnimation from '../../global/Loading';
 
 export default function ShowStudents({ students }) {
   const [studentDetails, setStudentDetails] = useState([]);
@@ -23,7 +24,7 @@ export default function ShowStudents({ students }) {
   }, [students.course_students,refresh]);
 
   if (!students.course_students) {
-    return <div>Loading...</div>;
+    return <LoadingAnimation/>;
   }
     return (
         <div className="card has-table">
@@ -32,9 +33,6 @@ export default function ShowStudents({ students }) {
           <span className="icon"><i className="mdi mdi-account-multiple"></i></span>
           Students
         </p>
-        <a href="#" className="card-header-icon">
-          <span className="icon"><i className="mdi mdi-reload"></i></span>
-        </a>
       </header>
       <div className="card-content">
         <table>

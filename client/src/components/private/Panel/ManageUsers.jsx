@@ -16,9 +16,6 @@ export default function ShowUsers(){
           <span className="icon"><i className="mdi mdi-account-multiple"></i></span>
           Manage Users
         </p>
-        <a href="#" className="card-header-icon">
-          <span className="icon"><i className="mdi mdi-reload"></i></span>
-        </a>
       </header>
       <div className="card-content">
         <table>

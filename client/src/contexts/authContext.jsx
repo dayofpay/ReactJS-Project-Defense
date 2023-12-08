@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import usePersistedState from "../hooks/usePersistedState";
 import PATH_LIST from "../utils/PathList";
 import { createUserSettings, editUser, isUserStaff } from "../services/userServices";
-import { addStudent, attachCourseFile, createCourse, editCourse, removeStudent } from "../services/courseServices";
-import { EditCourseKeys,CreateCourseKeys, CourseFileKeys } from "../keys/form-keys";
+import { addStudent, attachCourseFile, createComment, createCourse, editCourse, removeStudent } from "../services/courseServices";
+import { EditCourseKeys,CreateCourseKeys, CourseFileKeys, CommentKeys } from "../keys/form-keys";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({
@@ -61,7 +61,8 @@ export const AuthProvider = ({
     
       try {
         const result = await createCourse(courseObject);
-    
+  
+        navigate('/courses')
         console.log(result);
       } catch (error) {
         throw new Error('Error while trying to create course!', error);
@@ -145,6 +146,19 @@ export const AuthProvider = ({
         throw new Error('Unable to attach file',error);
       }
     }
+    const createCommentHandler = async(values) => {
+      const data = {
+        name : values[CommentKeys.Username],
+        email : values[CommentKeys.UserEmail],
+        comment: values[CommentKeys.CommentContent],
+      }
+      try{
+        await createComment(values[CommentKeys.CourseId],data);
+      }
+      catch(error){
+        throw new Error('Unable to create comment',error);
+      }
+    }
     const logoutHandler = () => {
       setAuth({});
       localStorage.clear();
@@ -160,7 +174,6 @@ export const AuthProvider = ({
         throw new Error(error);
       }
     }
-
     const logValues = {
       loginSubmitHandler,
       registerSubmitHandler,
@@ -177,6 +190,7 @@ export const AuthProvider = ({
       removeStudentFromCourseHandkler,
       editUserHandler,
       attachFileContext,
+      createCommentHandler,
       isAdmin
   } 
      return (

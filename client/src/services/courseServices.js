@@ -41,7 +41,7 @@ export async function addStudent(studentEmail, courseId) {
 
         if(isInCourse){
             console.error('The user is already in course ' + courseId)
-        return {error:'The user is already in this course'}
+        return {error:'You are already in this course'}
 
         }
         // Step 3: Add the studentEmail to the existing students
@@ -198,6 +198,27 @@ export async function joinCourse(courseId,userEmail){
         return result;
     }
 
-    return {error: 'You dont have enough balance'};
+    return {error: 'You dont have enough balance or you are already in this course'};
 
+}
+
+export async function createComment(courseId,data){
+    const url = "http://localhost:3030/data/course_comments/";
+    const commentObj = {
+        course_id : courseId,
+        comment : data.comment,
+        author : data.name,
+        author_email : data.email,
+    }
+    const result = await request.post(url,commentObj,true);
+
+    return result;
+}
+
+export async function getComments(courseId){
+    const url = "http://localhost:3030/data/course_comments/" + `?where=course_id%3D%22${courseId}%22`
+
+    const result = await request.get(url,true);
+
+    return result;
 }

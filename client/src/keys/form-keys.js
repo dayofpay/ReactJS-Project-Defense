@@ -42,4 +42,11 @@ const CourseFileKeys = {
     FileName : 'file-name',
     CourseId : 'course-id',
 }
-export {EditCourseKeys,CreateCourseKeys,AddStudentToCourseKeys,RemoveStudentFromCourseKeys,EditUserKeys,CourseFileKeys}
+
+const CommentKeys = {
+    Username : 'comment-user',
+    CommentContent : 'comment-content',
+    UserEmail : 'user-email',
+    CourseId : 'course-id',
+}
+export {EditCourseKeys,CreateCourseKeys,AddStudentToCourseKeys,RemoveStudentFromCourseKeys,EditUserKeys,CourseFileKeys,CommentKeys}

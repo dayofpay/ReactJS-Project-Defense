@@ -1,10 +1,8 @@
-import withCourseList from "../../../HOC/withCourseList"
 import withUserCourseList from "../../../HOC/withUserCourseList";
-import { addStudent } from "../../../services/courseServices";
 import convertTimestamp from "../../../utils/timeConvert";
 import UserStats from "./Statistics/User"
 
-
+import { Link } from "react-router-dom";
 function ShowDashboard({courseList}){
     const DataLabels = {
         'CourseName' : 'course-name',
@@ -20,9 +18,8 @@ function ShowDashboard({courseList}){
 <section className="is-hero-bar">
   <div className="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <h1 className="title">
-      Dashboard
+      Customer Dashboard
     </h1>
-    <button className="button light">Button</button>
   </div>
 </section>
                     { /* Load User stats */ <UserStats/>}
@@ -33,9 +30,6 @@ function ShowDashboard({courseList}){
           <span className="icon"><i className="mdi mdi-account-multiple"></i></span>
           My courses
         </p>
-        <a href="#" className="card-header-icon">
-          <span className="icon"><i className="mdi mdi-reload"></i></span>
-        </a>
       </header>
       <div className="card-content">
         {Array.from(courseList).length ? (        <table>
@@ -67,12 +61,9 @@ function ShowDashboard({courseList}){
             <td data-label={DataLabels.Course_ID}>{course._id}</td>
             <td className="actions-cell">
               <div className="buttons right nowrap">
-                <button className="button small green --jb-modal" data-target="sample-modal-2" type="button">
+                <Link className="button small green --jb-modal" data-target="sample-modal-2" to={"/course-info/" + course._id} type="button">
                   <span className="icon"><i className="mdi mdi-eye"></i></span>
-                </button>
-                <button className="button small red --jb-modal" data-target="sample-modal" type="button">
-                  <span className="icon"><i className="mdi mdi-trash-can"></i></span>
-                </button>
+                </Link>
               </div>
             </td>
           </tr>)}

@@ -9,6 +9,7 @@ import { EditCourseKeys } from "../../../keys/form-keys";
 import AddStudentToCourse from "./AddStudentToCourse";
 import RemoveStudent from "./RemoveStudentFromCourse";
 import ShowStudents from "./CourseStudents";
+import LoadingAnimation from "../../global/Loading";
 export default function EditCourse(){
 
 
@@ -111,14 +112,14 @@ export default function EditCourse(){
         })
       },[id])
       if (!courseData) {
-        return <div>Loading</div>;
+        return <LoadingAnimation/>;
       }
 return(
 <>
     <section className="is-hero-bar">
         <div className="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
             <h1 className="title">Edit Course</h1>
-            <button className="button light">Button</button>
+
         </div>
     </section>
     <section className="section main-section">

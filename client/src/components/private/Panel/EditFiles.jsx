@@ -73,7 +73,6 @@ export default function EditFiles(){
             <h1 className="title">
               Edit Course Files {id}
             </h1>
-            <button className="button light">Button</button>
           </div>
         </section>
         <div className="card mb-6">
@@ -116,11 +115,13 @@ export default function EditFiles(){
             </div>
           </div>
         </form>
-        {Object.keys(errors).map((fieldName) => (
-        <p key={fieldName} className={styles["error-message"]}>
-           {errors[fieldName]}
-        </p>
-      ))}
+        {Object.keys(errors)
+  .filter((fieldName) => errors[fieldName])
+  .map((fieldName) => (
+    <p key={fieldName} className={styles["error-message"]}>
+      {errors[fieldName]}
+    </p>
+))}
         {message && (      <div className={styles["success-edit-msg"]}>
         File {values[CourseFileKeys.FileName]} attached successfully!
       </div>)}
@@ -132,9 +133,6 @@ export default function EditFiles(){
           <span className="icon"><i className="mdi mdi-account-multiple"></i></span>
           Course Files
         </p>
-        <button className="card-header-icon">
-          <span className="icon"><i className="mdi mdi-reload"></i></span>
-        </button>
       </header>
       <div className="card-content">
         <table>

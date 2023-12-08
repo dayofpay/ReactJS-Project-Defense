@@ -52,11 +52,11 @@ function RenderNavigation({username,email}){
           </Link>
         </div>
       </div>
-      <a href="https://justboil.me/tailwind-admin-templates" className="navbar-item has-divider desktop-icon-only">
+      <a href="https://github.com/dayofpay/ReactJS-Project-Defense/" className="navbar-item has-divider desktop-icon-only">
         <span className="icon"><i className="mdi mdi-help-circle-outline"></i></span>
         <span>About</span>
       </a>
-      <a href="https://github.com/justboil/admin-one-tailwind" className="navbar-item has-divider desktop-icon-only">
+      <a href="https://github.com/dayofpay/ReactJS-Project-Defense" className="navbar-item has-divider desktop-icon-only">
         <span className="icon"><i className="mdi mdi-github-circle"></i></span>
         <span>GitHub</span>
       </a>

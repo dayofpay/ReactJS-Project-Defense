@@ -87,7 +87,7 @@ export default function EditUser(){
     <h1 className="title">
       Forms
     </h1>
-    <button className="button light">Button</button>
+
   </div>
 </section>
 <div className="card">

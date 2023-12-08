@@ -1348,26 +1348,26 @@
     };
     var seedData = {
     	courses: {
-            "3564027f-adcd-4425-b2c0-1253d2386c0c" :     {
+            "3564027f-adcd-4425-b2c0-1253d2386c0c" :         {
                 "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-                "course_name": "English B2",
+                "course_name": "Web Developer",
                 "course_students": [
                     "admin@abv.bg"
                 ],
-                "course_price": 155,
+                "course_price": 235,
+                "course_image": "https://miro.medium.com/v2/resize:fit:12000/0*tQQ7SLPOJfxaG4ZY",
                 "course_details": {
-                    "course_difficulity": "Easy"
+                    "course_difficulity": "Medium"
                 },
                 "course_lecturers": {
                     "lecturers_list": [
                         "Vladislav Ivanov"
                     ]
                 },
-                "course_description": "Learn english fast !",
-                "course_category": "English Classes",
-                "course_image" : "https://www.istudy.org.uk/wp-content/uploads/2018/10/335-Complete-English-Course-Beginner-Level.jpg",
-                "_createdOn": 1701650639686,
-                "_id": "d1c975bf-839e-4f8a-9282-3560107b5ee0"
+                "course_description": "Embark on a transformative journey into the dynamic world of web programming with our Comprehensive Web Programming Mastery course. This hands-on and immersive learning experience is designed for individuals aspiring to become proficient web developers or enhance their existing skills.\n\nCourse Overview:\n\nThis course covers a wide spectrum of web programming technologies and frameworks, providing students with a holistic understanding of both frontend and backend development. From building interactive user interfaces to designing robust server-side applications, participants will gain the expertise needed to create modern and responsive web solutions.\n\nKey Learning Objectives:\n\n    HTML5 and CSS3 Fundamentals:\n        Master the foundational building blocks of the web – HTML and CSS.\n        Create visually appealing and responsive web pages.\n\n    JavaScript and DOM Manipulation:\n        Dive into client-side scripting with JavaScript.\n        Learn to manipulate the Document Object Model (DOM) for dynamic web interactions.\n\n    Responsive Design and Frontend Frameworks:\n        Explore responsive design principles.\n        Harness the power of popular frontend frameworks such as Bootstrap or Tailwind CSS.\n\n    Backend Development with Node.js:\n        Introduce server-side JavaScript with Node.js.\n        Build scalable and efficient server applications.\n\n    Express.js and RESTful APIs:\n        Develop RESTful APIs using Express.js.\n        Understand the principles of backend routing and middleware.\n\n    Database Integration with MongoDB:\n        Connect your applications to MongoDB, a NoSQL database.\n        Learn data modeling and interaction with the database.\n\n    Authentication and Authorization:\n        Implement user authentication and authorization mechanisms.\n        Secure your applications with industry-standard practices.\n\n    Version Control with Git:\n        Collaborate efficiently with version control using Git.\n        Understand branching, merging, and best practices in collaborative development.\n\n    Deployment and Hosting:\n        Deploy your web applications to cloud platforms like Heroku or AWS.\n        Configure domain names and understand the basics of web hosting.\n\n    Web Security Best Practices:\n        Learn fundamental web security principles.\n        Mitigate common security vulnerabilities in web applications.\n\nPrerequisites:\n\n    Basic understanding of programming concepts.\n    Familiarity with HTML, CSS, and JavaScript is beneficial but not mandatory.\n\nWho Should Enroll:\n\n    Aspiring web developers\n    Software engineers looking to expand their skillset\n    Individuals seeking to build interactive and scalable web applications\n\nJoin us on this enriching journey and emerge as a proficient web programmer capable of building cutting-edge, user-centric web solutions. Master the skills that are in high demand in today's tech-driven world and unlock exciting career opportunities in web development.",
+                "course_category": "Programming",
+                "_createdOn": 1702051901113,
+                "_id": "c3fe8d8f-32b7-4290-9782-f5d3d6d22312"
             }
         },
         user_details : [{
@@ -1411,7 +1411,17 @@
         "attached_by" : "Test",
         "_createdOn": 1701577641645,
         "_id": "71ec20be-4f1d-4033-b974-4f1a1f51f267"
+    }],
+    course_comments :[{
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+        "course_id" : "3564027f-adcd-4425-b2c0-1253d2386c0c",
+        "comment" : "This is the best course i have ever participated !",
+        "author" : "Vladislav",
+        "author_email" : "admin@abv.bg",
+        "_createdOn": 1701577641645,
+        "_id": "3564027f-adcd-4425-b2c0-1253d2386c0c"
     }]
+
     };
     var rules$1 = {
     	users: {

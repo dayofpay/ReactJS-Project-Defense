@@ -48,9 +48,6 @@ function ShowCourses({courseList,setCourseList}){
           <span className="icon"><i className="mdi mdi-account-multiple"></i></span>
           All courses
         </p>
-        <a href="#" className="card-header-icon">
-          <span className="icon"><i className="mdi mdi-reload"></i></span>
-        </a>
       </header>
       <div className="card-content">
         {Array.from(courseList).length ? (        <table>
@@ -82,9 +79,9 @@ function ShowCourses({courseList,setCourseList}){
             <td data-label={DataLabels.Course_ID}>{course._id}</td>
             <td className="actions-cell">
               <div className="buttons right nowrap">
-                <button className="button small green --jb-modal" type="button" variant="primary">
+                <Link className="button small green --jb-modal" type="button" variant="primary" to={"/course-info/" + course._id}>
                   <span className="icon"><i className="mdi mdi-eye"></i></span>
-                </button>
+                </Link>
                 <button className="button small red --jb-modal" onClick={() => {setShowUserModal(!showModal),setDeleteCourseId(course._id)}} data-target="sample-modal" type="button">
                   <span className="icon"><i className="mdi mdi-trash-can"></i></span>
                 </button>
