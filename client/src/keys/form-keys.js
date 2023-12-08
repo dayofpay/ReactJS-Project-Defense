@@ -36,4 +36,10 @@ const EditUserKeys = {
     IsStaff : 'user-is-staff',
     UserId : 'user-id',
 }
-export {EditCourseKeys,CreateCourseKeys,AddStudentToCourseKeys,RemoveStudentFromCourseKeys,EditUserKeys}
+
+const CourseFileKeys = {
+    FileURL : 'file-url',
+    FileName : 'file-name',
+    CourseId : 'course-id',
+}
+export {EditCourseKeys,CreateCourseKeys,AddStudentToCourseKeys,RemoveStudentFromCourseKeys,EditUserKeys,CourseFileKeys}

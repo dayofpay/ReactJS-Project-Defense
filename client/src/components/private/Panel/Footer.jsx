@@ -9,6 +9,7 @@ export default function Footer(){
       </div>
 
       <div>
+        
         <p>Project Developed by : <a href="https://github.com/dayofpay" target="_blank">Vladislav Ivanov</a></p>
       </div>
       <a href='https://github.com/dayofpay/ReactJS-Project-Defense' target="_blank"><img alt='GitHub' src='https://img.shields.io/badge/VIEW_PROJECT-100000?style=for-the-badge&logo=GitHub&logoColor=white&labelColor=black&color=black'/></a>

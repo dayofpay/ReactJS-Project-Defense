@@ -88,7 +88,7 @@ export async function getUserDetails(data,identifier){
   const match = data;
   const url = `http://localhost:3030/data/user_details?where=${identifier}%3D%22${match}%22`;
   const result = await request.get(url,true);
-
+  console.log(url);
   return result[0]
 
 }

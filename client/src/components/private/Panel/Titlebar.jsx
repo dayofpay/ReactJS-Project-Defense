@@ -6,10 +6,7 @@ export default function Titlebar(){
       <li>Admin</li>
       <li>Dashboard</li>
     </ul>
-    <a href="https://justboil.me/" target="_blank" className="button blue">
-      <span className="icon"><i className="mdi mdi-credit-card-outline"></i></span>
-      <span>Premium Demo</span>
-    </a>
+   
   </div>
 </section>
     )

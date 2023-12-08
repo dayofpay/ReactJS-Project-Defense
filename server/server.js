@@ -1401,7 +1401,17 @@
             "_createdOn": 1701577641645,
             isStaff : true,
         }
-    ]
+    ],
+    course_files :[{
+        "_ownerId": "86bf67e3-4e54-41d7-a711-3286af00d145",
+        "email": "test@abv.bg",
+        "course_id" : "9S8F8SJS",
+        "course_file_url" : "https://google.bg/test",
+        "course_file_name" : "Test attachment",
+        "attached_by" : "Test",
+        "_createdOn": 1701577641645,
+        "_id": "71ec20be-4f1d-4033-b974-4f1a1f51f267"
+    }]
     };
     var rules$1 = {
     	users: {

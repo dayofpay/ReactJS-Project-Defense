@@ -105,3 +105,25 @@ export async function getCourseList(){
 
     return result;
 }
+
+export async function attachCourseFile(data){
+    const url = "http://localhost:3030/data/course_files/";
+
+    const result = await request.post(url,data,true);
+
+    return result;
+}
+
+export async function getCourseFiles(courseId){
+    const url = "http://localhost:3030/data/course_files" + `?where=course_id%3D%22${courseId}%22`;
+    const result = await request.get(url,true);
+    return result;
+}
+
+export async function deleteCourseFile(fileId){
+    const url = "http://localhost:3030/data/course_files/" + fileId;
+
+    const result = await request.remove(url,true);
+
+    return result;
+}

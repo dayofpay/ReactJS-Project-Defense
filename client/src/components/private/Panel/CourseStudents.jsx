@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getStudentName, getUserDetails } from '../../../services/userServices';
 import convertTimestamp from '../../../utils/timeConvert';
-
+import useRefresh from '../../../hooks/useRefresh';
 
 export default function ShowStudents({ students }) {
   const [studentDetails, setStudentDetails] = useState([]);
+  const { refresh, incrementRefresh } = useRefresh();
   useEffect(() => {
     const fetchData = async () => {
       if (students.course_students) {
@@ -19,7 +20,7 @@ export default function ShowStudents({ students }) {
     };
 
     fetchData();
-  }, [students.course_students]);
+  }, [students.course_students,refresh]);
 
   if (!students.course_students) {
     return <div>Loading...</div>;

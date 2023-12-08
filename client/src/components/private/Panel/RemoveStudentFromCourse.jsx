@@ -3,14 +3,17 @@ import { AddStudentToCourseKeys, RemoveStudentFromCourseKeys } from "../../../ke
 import styles from "../../../../public/css/custom.module.css";
 import AuthContext from "../../../contexts/authContext";
 import { useContext, useState } from "react";
+import useRefresh from "../../../hooks/useRefresh";
 export default function RemoveStudent(courseData){
     const {removeStudentFromCourseHandkler} = useContext(AuthContext);
     const [message,setMessage] = useState("");
+    const { refresh, incrementRefresh } = useRefresh();
     const {values,onChange, onSubmit, errors } = useForm(
       async () => {
         try {
           await removeStudentFromCourseHandkler(values);
           setMessage(`Student ${values["student-name"]} removed from the course successfully!`);
+          incrementRefresh();
         } catch (error) {
           throw new Error(error);
         }

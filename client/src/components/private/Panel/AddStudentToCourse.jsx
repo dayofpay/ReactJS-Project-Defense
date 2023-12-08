@@ -3,14 +3,17 @@ import { AddStudentToCourseKeys } from "../../../keys/form-keys";
 import styles from "../../../../public/css/custom.module.css";
 import AuthContext from "../../../contexts/authContext";
 import { useContext , useState} from "react";
+import useRefresh from "../../../hooks/useRefresh";
 export default function AddStudentToCourse(courseData){
     const {addCourseStudentHandler} = useContext(AuthContext)
     const [message,setMessage] = useState('')
+    const { refresh, incrementRefresh } = useRefresh();
     const {values,onChange, onSubmit, errors } = useForm(
       async () => {
         try {
           await addCourseStudentHandler(values);
           setMessage(`Student ${values["student-name"]} added to the course successfully!`);
+          incrementRefresh();
         } catch (error) {
           throw new Error(error);
         }

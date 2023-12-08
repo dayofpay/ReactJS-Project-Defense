@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import usePersistedState from "../hooks/usePersistedState";
 import PATH_LIST from "../utils/PathList";
 import { createUserSettings, editUser } from "../services/userServices";
-import { addStudent, createCourse, editCourse, removeStudent } from "../services/courseServices";
-import { EditCourseKeys,CreateCourseKeys } from "../keys/form-keys";
+import { addStudent, attachCourseFile, createCourse, editCourse, removeStudent } from "../services/courseServices";
+import { EditCourseKeys,CreateCourseKeys, CourseFileKeys } from "../keys/form-keys";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({
@@ -126,6 +126,23 @@ export const AuthProvider = ({
         throw new Error('Unable to edit user',error);
       }
     }
+
+    const attachFileContext = async(values) => {
+      const email = JSON.parse(localStorage.getItem('auth'))["email"];
+      const fileObject = {
+        email,
+        course_id : values[CourseFileKeys.CourseId],
+        course_file_url : values[CourseFileKeys.FileURL],
+        course_file_name : values[CourseFileKeys.FileName],
+        attached_by : email.split("@")[0],
+      }
+
+      try{
+        await attachCourseFile(fileObject);
+      }catch(error){
+        throw new Error('Unable to attach file',error);
+      }
+    }
     const logoutHandler = () => {
       setAuth({});
       localStorage.clear();
@@ -148,7 +165,8 @@ export const AuthProvider = ({
       logoutHandler,
       addCourseStudentHandler,
       removeStudentFromCourseHandkler,
-      editUserHandler
+      editUserHandler,
+      attachFileContext,
   } 
      return (
         <AuthContext.Provider value={logValues}>
