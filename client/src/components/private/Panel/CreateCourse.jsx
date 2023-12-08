@@ -84,28 +84,28 @@ return(
                             <div className="field">
                                 <div className="control icons-left">
                                     <input className="input" name={CreateCourseKeys.CourseName} onChange={onChange} type="text" placeholder="Course name" value={values[CreateCourseKeys.CourseName]} />
-                                    <span className="icon left"><i className="mdi mdi-account"></i></span>
+                                    <span className="icon left"><i className="mdi mdi-book-open-page-variant"></i></span>
                                 </div>
                             </div>
                             <div className="field">
                             <label className="label">Course Category</label>
                                 <div className="control icons-left">
                                     <input className="input" name={CreateCourseKeys.CourseCategory} onChange={onChange} type="text" placeholder="Course category" value={values[CreateCourseKeys.CourseCategory]} />
-                                    <span className="icon left"><i className="mdi mdi-account"></i></span>
+                                    <span className="icon left"><i className="mdi mdi-certificate"></i></span>
                                 </div>
                             </div>
                             <div className="field">
                             <label className="label">Course Price</label>
                                 <div className="control icons-left">
                                     <input className="input" type="number" name={CreateCourseKeys.CoursePrice} onChange={onChange} placeholder="Course price" value={values[CreateCourseKeys.CoursePrice]} />
-                                    <span className="icon left"><i className="mdi mdi-account"></i></span>
+                                    <span className="icon left"><i className="mdi mdi-currency-usd"></i></span>
                                 </div>
                             </div>
                             <div className="field">
                             <label className="label">Course Difficulity</label>
                                 <div className="control icons-left">
                                     <input className="input" type="text" name={CreateCourseKeys.CourseDifficulity} onChange={onChange} placeholder="Course difficulity" value={values[CreateCourseKeys.CourseDifficulity]} />
-                                    <span className="icon left"><i className="mdi mdi-account"></i></span>
+                                    <span className="icon left"><i className="mdi mdi-asterisk"></i></span>
                                 </div>
                             </div>
                             <div className="field">
@@ -119,7 +119,7 @@ return(
                             <label className="label">Course Image</label>
                                 <div className="control icons-left">
                                     <input className="input" type="text" name={CreateCourseKeys.CourseImage} onChange={onChange} placeholder="Course Image" value={values[CreateCourseKeys.CourseImage]}/>
-                                    <span className="icon left"><i className="mdi mdi-account"></i></span>
+                                    <span className="icon left"><i className="mdi mdi-image-plus"></i></span>
                                 </div>
                             </div>
                             <div className="field">
