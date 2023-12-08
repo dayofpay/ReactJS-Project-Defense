@@ -119,8 +119,6 @@ export const AuthProvider = ({
         balance : Number(values["user-balance"]),
         isStaff: values["user-is-staff"],
       }
-      const isStaff = values["user-is-staff"];
-      console.log(isStaff);
       try{
         console.log(values);
         await editUser(values["user-id"],editObject);
