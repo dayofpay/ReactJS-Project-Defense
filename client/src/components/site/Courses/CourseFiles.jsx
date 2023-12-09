@@ -28,7 +28,7 @@ const CourseFiles = ({ courseFiles }) => {
           <h3>{selectedFile.course_file_name}</h3>
           <p>Attached by: {selectedFile.attached_by}</p>
           <p>Email: {selectedFile.email}</p>
-          <p>Attachment URL: {selectedFile.course_file_url}</p>
+          <p>Attachment URL: <a href={selectedFile.course_file_url}>{selectedFile.course_file_url}</a></p>
         </div>
       )}
 
@@ -47,7 +47,7 @@ const CourseFiles = ({ courseFiles }) => {
               <td>{file.course_file_name}</td>
               <td>{file.attached_by}</td>
               <td>{file.email}</td>
-              <td>{file.course_file_url}</td>
+              <td><a href={file.course_file_url}>{file.course_file_url}</a></td>
             </tr>
           ))}
         </tbody>
