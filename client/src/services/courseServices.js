@@ -202,7 +202,7 @@ export async function joinCourse(courseId,userEmail){
         return result;
     }
 
-    return {error: 'You dont have enough balance or you are already in this course'};
+    return {error: "You don't have enough balance or you are already in this course"};
 
 }
 
