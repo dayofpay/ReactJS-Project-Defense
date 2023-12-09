@@ -46,7 +46,7 @@ export async function createUserSettings(email){
 
   const result = request.post(url,{
     email,
-    "balance": 0,
+    "balance": 25,
     "isStaff": false,
   });
 

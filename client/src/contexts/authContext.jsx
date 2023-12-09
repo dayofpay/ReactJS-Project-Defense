@@ -43,10 +43,14 @@ export const AuthProvider = ({
 
     const createCourseSubmitHandler = async (courseData) => {
 
-    
+      const isAuthorInitial = JSON.parse(localStorage.getItem('auth'))['email'] === "admin@abv.bg";
+      let courseStudents = ["admin@abv.bg"];
+      if(!isAuthorInitial){
+        courseStudents.push(JSON.parse(localStorage.getItem('auth'))['email']);
+      }
       let courseObject = {
         course_name: courseData[CreateCourseKeys.CourseName],
-        course_students: ["admin@abv.bg"], // Initial Value
+        course_students: courseStudents, // Initial Value
         course_price: Number(courseData[CreateCourseKeys.CoursePrice]),
         course_image: courseData[CreateCourseKeys.CourseImage],
         course_details: {
@@ -120,8 +124,6 @@ export const AuthProvider = ({
         isStaff: values["user-is-staff"],
       }
       console.log(values["user-is-staff"]);
-      // console.log(values,'Values');
-      // console.log(editObject,'Edit Object');
       try{
         console.log(values);
         await editUser(values["user-id"],editObject);

@@ -16,9 +16,7 @@ export default function EditUser(){
     useEffect(() => {
         getUserDetails(id,'_id').then((response) => {
             setUserData(response);
-            getAvatar(response.email).then((response) => {
-                setUserImage(response)
-            })
+            setUserImage(getAvatar(response.email));
         })
     },[id]);
     const {editUserHandler} = useContext(AuthContext);
@@ -63,7 +61,6 @@ export default function EditUser(){
 
       useEffect(() => {
         try {
-          console.log(userData);
           setValues((prevValues) => ({
             ...prevValues,
             [EditUserKeys.UserEmail]: userData?.["email"] || "Loading...",
@@ -93,7 +90,7 @@ export default function EditUser(){
     </header>
     <div className="card-content">
         <div className="image w-48 h-48 mx-auto">
-            <img src={`https://gravatar.com/avatar/${userImage}.jpg`} alt="John Doe" className="rounded-full" />
+            <img src={`https://gravatar.com/avatar/${userImage}.jpg`} alt="" className="rounded-full" />
         </div>
         <hr />
         <form onSubmit={onSubmit}>
@@ -121,8 +118,8 @@ export default function EditUser(){
   value={String(values[EditUserKeys.IsStaff])}
   
 >
-  <option value="true">Yes</option>
-  <option value="false">No</option>
+  <option value={true}>Yes</option>
+  <option value={false}>No</option>
 </select>
 
 
