@@ -111,8 +111,8 @@ function ShowCourses({courseList,setCourseList}){
           <h1>Are you sure you want to delete this Course (ID: {deleteCourseId})?</h1>
           <ul>
             {/* Pass the course ID to the handler */}
-            <Link onClick={() => handleDeleteCourse(deleteCourseId)}>Yes</Link>
-            <button onClick={() => setShowUserModal(!showModal)}>No</button>
+            <Link onClick={() => handleDeleteCourse(deleteCourseId)} className="btn btn-primary">Yes</Link>
+            <button onClick={() => setShowUserModal(!showModal)} className="btn btn-danger">No</button>
           </ul>
         </div>
       )}
