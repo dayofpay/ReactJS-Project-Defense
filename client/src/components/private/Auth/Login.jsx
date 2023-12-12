@@ -8,6 +8,7 @@ import styles from "../../../../public/css/custom.module.css";
 export default function Login(){
     LoadDependencies();
 
+    // todo migrate the login form keys to the keys folder
     const LoginFormKeys = {
         Email: 'email',
         Password: 'password',
