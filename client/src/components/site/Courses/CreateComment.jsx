@@ -45,7 +45,7 @@ export default function ShowCreateComment(){
   <h2>Create a Comment</h2>
   <form className="comment-form" onSubmit={onSubmit}>
     <div className="form-group">
-        <p>Please login in order to create comment !</p>
+        {!isAuthenticated && <p>Please login in order to create comment !</p>}
       <label htmlFor="author">Your Name:</label>
       <input type="text" id={CommentKeys.Username} name={CommentKeys.Username} onChange={onChange} value={values[CommentKeys.Username]} readOnly={true} required/>
     </div>
