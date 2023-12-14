@@ -38,6 +38,12 @@ export default function EditCourse(){
             [EditCourseKeys.CourseDescription]: "",
           },
         {
+          [EditCourseKeys.CourseName] : (value) => {
+            if(!value){
+              return "Please provide course name";
+            }
+            return "";
+          },
           [EditCourseKeys.CourseImage]: (value) => {
             console.log(value);
             if (!value) {
